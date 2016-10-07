@@ -61,7 +61,7 @@ public class Test_Test {
                 then().
                 statusCode(201).
                 extract().response();
-        System.out.println(response.path("id"));
+        System.out.println(response.path("key"));
 
     }
 
@@ -72,7 +72,7 @@ public class Test_Test {
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
                 when().
-                delete("/rest/api/2/issue/qaaut-198").then().statusCode(204);
+                delete("/rest/api/2/issue/qaaut-86").then().statusCode(204);
 
     }
 
@@ -166,6 +166,54 @@ public class Test_Test {
                 when().
                 post("/rest/auth/1/session").
                 then().statusCode(401);
+
+    }
+    @Test
+    public void  addComment(){
+        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
+        String body ="{\n" +
+                "    \"body\": \"This is a comment regarding the quality of the response.\"\n" +
+                "}";
+        Response response=
+        given().
+                header("Cookie", "JSESSIONID=" + sessionId).
+                header("Content-Type", "application/json").
+                body(body).
+                when().
+                post("rest/api/2/issue/QAAUT-320/comment").then().statusCode(201).extract().response();
+        System.out.println(response.path("id"));
+
+
+
+
+    }
+    @Test
+    public  void  getIssue(){
+        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
+        Response response=
+
+
+        given().
+                header("Cookie", "JSESSIONID=" + sessionId).
+                header("Content-Type", "application/json").
+                when().
+                get("/rest/api/2/issue/QAAUT-320/comment/11037").then().statusCode(200).extract().response();
+        System.out.println(response.asString());
+
+
+
+
+    }
+    @Test
+    public  void deleteComment(){
+        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
+
+
+        given().
+                header("Cookie", "JSESSIONID=" + sessionId).
+                header("Content-Type", "application/json").
+                when().
+                delete("/rest/api/2/issue/QAAUT-320/comment/11036").then().statusCode(204);
 
     }
 
