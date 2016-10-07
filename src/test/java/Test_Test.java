@@ -221,6 +221,10 @@ public class Test_Test {
                 delete("/rest/api/2/issue/QAAUT-320/comment/11038").then().statusCode(204);
 
     }
+    @Test
+    public void getLink(){
+
+    }
 
 
 
