@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.sessionId;
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * Created by n1ck on 9/26/16.
@@ -180,7 +181,8 @@ public class Test_Test {
                 header("Content-Type", "application/json").
                 body(body).
                 when().
-                post("rest/api/2/issue/QAAUT-320/comment").then().statusCode(201).extract().response();
+                post("rest/api/2/issue/QAAUT-320/comment");
+        assertTrue(response.getStatusCode()==201);
         System.out.println(response.path("id"));
 
 
@@ -197,8 +199,11 @@ public class Test_Test {
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
                 when().
-                get("/rest/api/2/issue/QAAUT-320/comment/11037").then().statusCode(200).extract().response();
-        System.out.println(response.asString());
+                get("/rest/api/2/issue/QAAUT-320/comment/11037");
+        assertTrue(response.getStatusCode()==200);
+
+
+       System.out.println(response.asString());
 
 
 
@@ -213,7 +218,7 @@ public class Test_Test {
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
                 when().
-                delete("/rest/api/2/issue/QAAUT-320/comment/11036").then().statusCode(204);
+                delete("/rest/api/2/issue/QAAUT-320/comment/11038").then().statusCode(204);
 
     }
 
