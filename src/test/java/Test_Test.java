@@ -8,9 +8,7 @@ import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.sessionId;
 import static org.testng.AssertJUnit.assertTrue;
 
-/**
- * Created by n1ck on 9/26/16.
- */
+
 public class Test_Test {
     String sessionId = "";
 
@@ -73,7 +71,7 @@ public class Test_Test {
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
                 when().
-                delete("/rest/api/2/issue/qaaut-86").then().statusCode(204);
+                delete("/rest/api/2/issue/qaaut-334").then().statusCode(204);
 
     }
 
@@ -131,12 +129,14 @@ public class Test_Test {
                 "        \"assignee\"\n" +
                 "    ]\n" +
                 "}";
-        given().
+       Response response= given().
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
                 body(body).
                 when().
-                post("/rest/api/2/search").then().statusCode(200).extract().path("issues");
+                post("/rest/api/2/search");
+
+        System.out.println(response.asString());
 
     }
     @Test
@@ -190,25 +190,26 @@ public class Test_Test {
 
     }
     @Test
-    public  void  getIssue(){
+    public  void  getComment() {
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        Response response=
+        Response response =
 
 
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                when().
-                get("/rest/api/2/issue/QAAUT-320/comment/11037");
-        assertTrue(response.getStatusCode()==200);
+                given().
+                        header("Cookie", "JSESSIONID=" + sessionId).
+                        header("Content-Type", "application/json").
+                        when().
+                        get("/rest/api/2/issue/QAAUT-320/comment/11037");
+        assertTrue(response.getStatusCode() == 200);
 
 
-       System.out.println(response.asString());
-
-
-
-
+        System.out.println(response.asString());
     }
+
+
+
+
+
     @Test
     public  void deleteComment(){
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
@@ -221,10 +222,7 @@ public class Test_Test {
                 delete("/rest/api/2/issue/QAAUT-320/comment/11038").then().statusCode(204);
 
     }
-    @Test
-    public void getLink(){
 
-    }
 
 
 
