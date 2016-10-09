@@ -71,7 +71,7 @@ public class Test_Test {
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
                 when().
-                delete("/rest/api/2/issue/qaaut-334").then().statusCode(204);
+                delete("/rest/api/2/issue/qaaut-335").then().statusCode(204);
 
     }
 

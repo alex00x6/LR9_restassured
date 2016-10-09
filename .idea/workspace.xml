@@ -5,8 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/MyIssue.class" afterPath="$PROJECT_DIR$/target/test-classes/MyIssue.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/Test_Test.class" afterPath="$PROJECT_DIR$/target/test-classes/Test_Test.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LR_9.iml" afterPath="$PROJECT_DIR$/LR_9.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/MyIssue.java" afterPath="$PROJECT_DIR$/src/test/java/MyIssue.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Test_Test.java" afterPath="$PROJECT_DIR$/src/test/java/Test_Test.java" />
     </list>
@@ -54,8 +52,8 @@
       <file leaf-file-name="MyIssue.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/MyIssue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="824">
-              <caret line="329" column="0" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
+            <state relative-caret-position="-1377">
+              <caret line="222" column="23" selection-start-line="222" selection-start-column="23" selection-end-line="222" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,7 +64,7 @@
       <file leaf-file-name="Test_Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Test_Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
+            <state relative-caret-position="17">
               <caret line="73" column="51" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -102,6 +100,7 @@
         <option value="$PROJECT_DIR$/src/main/java/fixtures/JSONFixture.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/baseTestData.java" />
         <option value="$PROJECT_DIR$/src/test/java/baseTestData.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Comment.java" />
         <option value="$PROJECT_DIR$/src/test/java/Test_Test.java" />
         <option value="$PROJECT_DIR$/src/test/java/MyIssue.java" />
       </list>
@@ -145,7 +144,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -206,8 +206,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -221,16 +220,16 @@
       <path value="$PROJECT_DIR$/LR_9" />
     </excluded-roots>
   </component>
-  <component name="RunManager" selected="TestNG.MyIssue.addComment">
-    <configuration default="false" name="Test_Test.deleteIssue" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.MyIssue">
+    <configuration default="false" name="MyIssue.editSummary" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="LR_9" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Test_Test" />
-      <option name="METHOD_NAME" value="deleteIssue" />
+      <option name="MAIN_CLASS_NAME" value="MyIssue" />
+      <option name="METHOD_NAME" value="editSummary" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -250,7 +249,7 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="false" name="MyIssue.DeleteIssue" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="MyIssue.getIssue" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="LR_9" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -258,7 +257,7 @@
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MyIssue" />
-      <option name="METHOD_NAME" value="DeleteIssue" />
+      <option name="METHOD_NAME" value="getIssue" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -306,7 +305,7 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="false" name="MyIssue.editSummary" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="MyIssue" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="LR_9" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -314,9 +313,9 @@
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MyIssue" />
-      <option name="METHOD_NAME" value="editSummary" />
+      <option name="METHOD_NAME" />
       <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -334,7 +333,7 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="false" name="MyIssue.addComment" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="MyIssue.deleteComment" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="LR_9" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -342,7 +341,7 @@
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MyIssue" />
-      <option name="METHOD_NAME" value="addComment" />
+      <option name="METHOD_NAME" value="deleteComment" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -642,19 +641,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="TestNG.Test_Test.deleteIssue" />
-      <item index="1" class="java.lang.String" itemvalue="TestNG.MyIssue.DeleteIssue" />
+      <item index="0" class="java.lang.String" itemvalue="TestNG.MyIssue.editSummary" />
+      <item index="1" class="java.lang.String" itemvalue="TestNG.MyIssue.getIssue" />
       <item index="2" class="java.lang.String" itemvalue="TestNG.MyIssue.CreateIssue" />
-      <item index="3" class="java.lang.String" itemvalue="TestNG.MyIssue.editSummary" />
-      <item index="4" class="java.lang.String" itemvalue="TestNG.MyIssue.addComment" />
+      <item index="3" class="java.lang.String" itemvalue="TestNG.MyIssue" />
+      <item index="4" class="java.lang.String" itemvalue="TestNG.MyIssue.deleteComment" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="TestNG.MyIssue.addComment" />
-        <item index="1" class="java.lang.String" itemvalue="TestNG.MyIssue.editSummary" />
-        <item index="2" class="java.lang.String" itemvalue="TestNG.Test_Test.deleteIssue" />
+        <item index="0" class="java.lang.String" itemvalue="TestNG.MyIssue" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.MyIssue.deleteComment" />
+        <item index="2" class="java.lang.String" itemvalue="TestNG.MyIssue.getIssue" />
         <item index="3" class="java.lang.String" itemvalue="TestNG.MyIssue.CreateIssue" />
-        <item index="4" class="java.lang.String" itemvalue="TestNG.MyIssue.DeleteIssue" />
+        <item index="4" class="java.lang.String" itemvalue="TestNG.MyIssue.editSummary" />
       </list>
     </recent_temporary>
   </component>
@@ -712,39 +711,46 @@
       <option name="project" value="LOCAL" />
       <updated>1475873267708</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="3rd v">
+      <created>1475953231383</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1475953231383</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyIssue_CreateIssue - 2016.10.08 at 20h 57m 32s.xml">
+    <history-entry file="MyIssue - 2016.10.09 at 18h 00m 49s.xml">
+      <configuration name="MyIssue" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="MyIssue - 2016.10.09 at 18h 07m 11s.xml">
+      <configuration name="MyIssue" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="MyIssue_CreateIssue - 2016.10.09 at 17h 59m 18s.xml">
       <configuration name="MyIssue.CreateIssue" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="MyIssue_DeleteIssue - 2016.10.08 at 20h 57m 01s.xml">
-      <configuration name="MyIssue.DeleteIssue" configurationId="TestNG" />
+    <history-entry file="MyIssue_changeIssueType - 2016.10.09 at 17h 57m 01s.xml">
+      <configuration name="MyIssue.changeIssueType" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="MyIssue_DeleteIssue - 2016.10.08 at 20h 57m 07s.xml">
-      <configuration name="MyIssue.DeleteIssue" configurationId="TestNG" />
+    <history-entry file="MyIssue_changeIssueType - 2016.10.09 at 17h 57m 35s.xml">
+      <configuration name="MyIssue.changeIssueType" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="MyIssue_addComment - 2016.10.08 at 21h 04m 01s.xml">
-      <configuration name="MyIssue.addComment" configurationId="TestNG" />
+    <history-entry file="MyIssue_deleteComment - 2016.10.09 at 18h 01m 47s.xml">
+      <configuration name="MyIssue.deleteComment" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="MyIssue_createIssueDeleteIssue - 2016.10.08 at 17h 32m 25s.xml">
-      <configuration name="MyIssue.createIssueDeleteIssue" configurationId="TestNG" />
+    <history-entry file="MyIssue_deleteComment - 2016.10.09 at 18h 06m 51s.xml">
+      <configuration name="MyIssue.deleteComment" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="MyIssue_editSummary - 2016.10.08 at 21h 00m 00s.xml">
+    <history-entry file="MyIssue_editSummary - 2016.10.09 at 17h 58m 24s.xml">
       <configuration name="MyIssue.editSummary" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_Test_deleteIssue - 2016.10.08 at 17h 34m 19s.xml">
-      <configuration name="Test_Test.deleteIssue" configurationId="TestNG" />
+    <history-entry file="MyIssue_getIssue - 2016.10.09 at 17h 58m 53s.xml">
+      <configuration name="MyIssue.getIssue" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_Test_deleteIssue - 2016.10.08 at 17h 36m 05s.xml">
-      <configuration name="Test_Test.deleteIssue" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Test_deleteIssue - 2016.10.08 at 17h 36m 27s.xml">
-      <configuration name="Test_Test.deleteIssue" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Test_deleteIssue - 2016.10.08 at 20h 59m 03s.xml">
-      <configuration name="Test_Test.deleteIssue" configurationId="TestNG" />
+    <history-entry file="MyIssue_getIssue - 2016.10.09 at 18h 00m 01s.xml">
+      <configuration name="MyIssue.getIssue" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -768,22 +774,22 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908162" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780612" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5102041" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908162" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19568151" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39923468" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39923468" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -825,11 +831,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="second version" />
-    <option name="LAST_COMMIT_MESSAGE" value="second version" />
+    <MESSAGE value="3rd v" />
+    <option name="LAST_COMMIT_MESSAGE" value="3rd v" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -838,6 +845,50 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testng.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/MyIssue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="70" column="37" selection-start-line="40" selection-start-column="7" selection-end-line="70" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="110" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Test_Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -1040,14 +1091,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testng.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/jayway/restassured/rest-assured/2.9.0/rest-assured-2.9.0.jar!/com/jayway/restassured/RestAssured.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -1056,33 +1099,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entities/baseTestData.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/entities/baseTestData.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/fixtures/JSONFixture.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/baseTestData.java" />
+    <entry file="file://$PROJECT_DIR$/testng.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fixtures/JSONFixture.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/Comment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/baseTestData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" selection-start-line="6" selection-start-column="31" selection-end-line="7" selection-end-column="1" />
+        <state relative-caret-position="-1046">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test_Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
+        <state relative-caret-position="17">
           <caret line="73" column="51" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1092,8 +1130,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/MyIssue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="824">
-          <caret line="329" column="0" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
+        <state relative-caret-position="-1377">
+          <caret line="222" column="23" selection-start-line="222" selection-start-column="23" selection-end-line="222" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
