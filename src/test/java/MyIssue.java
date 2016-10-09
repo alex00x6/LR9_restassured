@@ -2,6 +2,7 @@ import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.w3c.dom.Comment;
 
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.sessionId;
@@ -17,6 +18,7 @@ public class MyIssue {
     String commentId="";
     String issueSummary="";
     String issueType="";
+    String Comment="";
 
 
 
@@ -239,7 +241,7 @@ public class MyIssue {
                 when().
                 put("/rest/api/2/issue/"+IssueKey).then().statusCode(204);
 
-        // get summary
+       /* // get summary
         issueSummary = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
@@ -250,6 +252,26 @@ public class MyIssue {
                 statusCode(201).
                 extract().path("summary");
         System.out.println(issueSummary);
+
+        // remove summary
+        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
+        String bo = ("{  \n" +
+                "\" +\n" +
+                "                \"   \\\"update\\\":{  \\n\" +\n" +
+                "                \"      \\\"summary\\\":[  \\n\" +\n" +
+                "                \"         {  \\n\" +\n" +
+                "                \"            \\\"remove\\\":\\\"new edit summary\\\"\\n\" +\n" +
+                "                \"         }\\n\" +\n" +
+                "                \"      ]\\n\" +\n" +
+                "                \"   }\\n\" +\n" +
+                "                \"}");
+        given().
+                header("Cookie", "JSESSIONID=" + sessionId).
+                header("Content-Type", "application/json").
+                body(bo).
+                when().
+                delete("/rest/api/2/issue/"+IssueKey).then().statusCode(204);*/
+
 
         // delete issue
         given().
@@ -311,7 +333,7 @@ public class MyIssue {
                 when().
                 put("/rest/api/2/issue/"+IssueKey).then().statusCode(204);
 
-        // get issue type
+       /* // get issue type
         issueType = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
@@ -321,7 +343,7 @@ public class MyIssue {
                 then().
                 statusCode(201).
                 extract().path("issuetype");
-        System.out.println(issueType);
+        System.out.println(issueType);*/
 
         // delete issue
         given().
@@ -548,6 +570,15 @@ public class MyIssue {
                 when().
                 delete("/rest/api/2/issue/"+IssueKey+"/comment/"+commentId).then().statusCode(204);
 
+        // удаление issue
+
+        given().
+                header("Cookie", "JSESSIONID=" + sessionId).
+                header("Content-Type", "application/json").
+                when().
+                delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);
+
+
     }
 
 
@@ -605,21 +636,19 @@ public class MyIssue {
         // assertTrue(response.getStatusCode()==201);
         System.out.println(commentId);
 
-        //get comment
+        /*//get comment
 
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        Response response =
 
 
-                given().
+
+              Comment=  given().
                         header("Cookie", "JSESSIONID=" + sessionId).
                         header("Content-Type", "application/json").
                         when().
-                        get("/rest/api/2/issue/"+IssueKey+"/comment/"+commentId);
-        assertTrue(response.getStatusCode() == 200);
+                        get("/rest/api/2/issue/"+IssueKey+"/comment/"+commentId).then().statusCode(201).extract().path("body");
+        System.out.println(Comment);*/
 
-
-        System.out.println(response.asString());
 
         //delete comment
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
@@ -630,6 +659,16 @@ public class MyIssue {
                 header("Content-Type", "application/json").
                 when().
                 delete("/rest/api/2/issue/"+IssueKey+"/comment/"+commentId).then().statusCode(204);
+
+        // delete issue
+
+        given().
+                header("Cookie", "JSESSIONID=" + sessionId).
+                header("Content-Type", "application/json").
+                when().
+                delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);
+
+
 
 
     }
@@ -689,8 +728,8 @@ public class MyIssue {
             System.out.println(commentId);
 
 
-            // delete comment
 
+            // delete comment
             RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
 
 
@@ -700,8 +739,36 @@ public class MyIssue {
                     when().
                     delete("/rest/api/2/issue/"+IssueKey+"/comment/"+commentId).then().statusCode(204);
 
+            // delete issue
+            given().
+                    header("Cookie", "JSESSIONID=" + sessionId).
+                    header("Content-Type", "application/json").
+                    when().
+                    delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);
+
+
+
+
+
+
+
         }
-}
+  /*  @Test
+    public void removeSummary(){
+        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
+        String bo = ("{\n" +
+                "    \"update\" : {\n" +
+                "        \"components\" : [{\"remove\" : {\"summary\" : \"RESTAssured summary\"}}]\n" +
+                "    }\n" +
+                "}");
+        given().
+                header("Cookie", "JSESSIONID=" + sessionId).
+                header("Content-Type", "application/json").
+                body(bo).
+                when().
+                put("/rest/api/2/issue/QAAUT-411").then().statusCode(204);*/
+    }
+
 
 
 
