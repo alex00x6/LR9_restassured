@@ -19,6 +19,7 @@ public class RequestSender {
         authenticate();
     }
 
+
     public void authenticate() {
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
 
@@ -37,6 +38,7 @@ public class RequestSender {
                 .addBody(body);
         return this;
     }
+
     public RequestSender createRequestSpecification() {
         requestSpecification = given().
                 when();
@@ -57,6 +59,21 @@ public class RequestSender {
     }
     public String extractResponseByPath(String path){
         return response.then().extract().path(path);
+    }
+    public RequestSender createRequest() {
+        this.createRequestSpecification()
+                .addHeader("Content-Type", CONTENT_TYPE.toString())
+                .addHeader("Cookie", "JSESSIONID=" + RequestSender.JSESSIONID);
+        return this;
+    }
+
+    public RequestSender delete(String uri) {
+        response = requestSpecification.delete(uri);
+        return this;
+    }
+    public RequestSender get(String uri) {
+        response = requestSpecification.get(uri);
+        return this;
     }
 
 }
