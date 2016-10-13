@@ -9,8 +9,11 @@ import static com.jayway.restassured.RestAssured.sessionId;
 import static org.testng.AssertJUnit.assertTrue;
 
 
+@Test(groups = {"Issue"})
+
 public class Test_Test {
     String sessionId = "";
+    String IssueKey="";
 
     @BeforeTest
     public void login() {
@@ -30,8 +33,7 @@ public class Test_Test {
     }
 
     @Test
-    public void createIssue() {
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
+    public void createIssue() {RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
         String body = "{\n" +
                 "\n" +
                 "\t\"fields\": {\n" +
@@ -50,8 +52,9 @@ public class Test_Test {
                 "\t\t}\n" +
                 "\t}\n" +
                 "}\n";
-        Response response =
-                given().
+        // создание Issue
+
+        IssueKey = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
                 body(body).
@@ -59,19 +62,20 @@ public class Test_Test {
                 post("/rest/api/2/issue").
                 then().
                 statusCode(201).
-                extract().response();
-        System.out.println(response.path("key"));
+                extract().path("key");
+        System.out.println(IssueKey);
+
 
     }
 
-    @Test
+    @Test(dependsOnMethods = {"createIssue"})
     public void deleteIssue() {
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
         given().
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
                 when().
-                delete("/rest/api/2/issue/qaaut-335").then().statusCode(204);
+                delete("/rest/api/2/issue/"+IssueKey).then().statusCode(204);
 
     }
 

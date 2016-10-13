@@ -1,17 +1,18 @@
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
+import fixture.JiraJSONFixture;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.w3c.dom.Comment;
+import utils.RequestSender;
+
 
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.sessionId;
+import static org.testng.AssertJUnit.assertNotNull;
 import static org.testng.AssertJUnit.assertTrue;
 
 
-/**
- * Created by Kate on 26.09.2016.
- */
 public class MyIssue {
        String sessionId = "";
     String IssueKey = "";
@@ -20,48 +21,26 @@ public class MyIssue {
     String issueType="";
     String Comment="";
 
+    JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
 
 
 
-
-    @BeforeTest
+    @Test
     public void login() {
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body = "{\n" +
-                "    \"username\": \"katherinebilous\",\n" +
-                "    \"password\": \"Polis484)\"\n" +
-                "} ";
-        sessionId = given().
-                header("Content-Type", "application/json").
-                body(body).
-                when().
-                post("/rest/auth/1/session").
-                then().
-                extract().
-                path("session.value");
+
+        RequestSender requestSender= new RequestSender();
+        requestSender.authenticate();
+
+        sessionId =requestSender.extractResponseByPath("session.value");
+        assertNotNull(requestSender.extractResponseByPath("session.value"));
+        System.out.println(requestSender.extractResponseByPath("session.value"));
+
     }
 
     @Test
     public void DeleteIssue() {
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body = "{\n" +
-                "\n" +
-                "\t\"fields\": {\n" +
-                "\t\t\"project\": {\n" +
-                "\t\t\t\"id\": \"10315\"\n" +
-                "\t\t},\n" +
-                "\t\t\"summary\": \"RESTAssured summary\",\n" +
-                "\t\t\"issuetype\": {\n" +
-                "\t\t\t\"id\": \"10004\"\n" +
-                "\t\t},\n" +
-                "\t\t\"assignee\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t},\n" +
-                "\t\t\"reporter\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t}\n" +
-                "\t}\n" +
-                "}\n";
+        String body = jiraJSONFixture.generateJSONForSampleIssue();
         // создание Issue
 
         IssueKey = given().
@@ -89,29 +68,12 @@ public class MyIssue {
     @Test
     public void CreateIssue() {
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body = "{\n" +
-                "\n" +
-                "\t\"fields\": {\n" +
-                "\t\t\"project\": {\n" +
-                "\t\t\t\"id\": \"10315\"\n" +
-                "\t\t},\n" +
-                "\t\t\"summary\": \"RESTAssured summary\",\n" +
-                "\t\t\"issuetype\": {\n" +
-                "\t\t\t\"id\": \"10004\"\n" +
-                "\t\t},\n" +
-                "\t\t\"assignee\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t},\n" +
-                "\t\t\"reporter\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t}\n" +
-                "\t}\n" +
-                "}\n";
+        String sampleIssue = jiraJSONFixture.generateJSONForSampleIssue();
 
         IssueKey = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
-                body(body).
+                body(sampleIssue).
                 when().
                 post("/rest/api/2/issue").
                 then().
@@ -132,24 +94,7 @@ public class MyIssue {
 
 
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String b = "{\n" +
-                "\n" +
-                "\t\"fields\": {\n" +
-                "\t\t\"project\": {\n" +
-                "\t\t\t\"id\": \"10315\"\n" +
-                "\t\t},\n" +
-                "\t\t\"summary\": \"RESTAssured summary\",\n" +
-                "\t\t\"issuetype\": {\n" +
-                "\t\t\t\"id\": \"10004\"\n" +
-                "\t\t},\n" +
-                "\t\t\"assignee\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t},\n" +
-                "\t\t\"reporter\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t}\n" +
-                "\t}\n" +
-                "}\n";
+        String b = jiraJSONFixture.generateJSONForSampleIssue();
         // создание Issue
 
         IssueKey = given().
@@ -186,30 +131,13 @@ public class MyIssue {
     }
 
 
-    @Test
+    @Test()
     public void editSummary() {
 
         // create issue
 
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String b = "{\n" +
-                "\n" +
-                "\t\"fields\": {\n" +
-                "\t\t\"project\": {\n" +
-                "\t\t\t\"id\": \"10315\"\n" +
-                "\t\t},\n" +
-                "\t\t\"summary\": \"RESTAssured summary\",\n" +
-                "\t\t\"issuetype\": {\n" +
-                "\t\t\t\"id\": \"10004\"\n" +
-                "\t\t},\n" +
-                "\t\t\"assignee\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t},\n" +
-                "\t\t\"reporter\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t}\n" +
-                "\t}\n" +
-                "}\n";
+        String b = jiraJSONFixture.generateJSONForSampleIssue();
 
         IssueKey = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
@@ -241,8 +169,8 @@ public class MyIssue {
                 when().
                 put("/rest/api/2/issue/"+IssueKey).then().statusCode(204);
 
-       /* // get summary
-        issueSummary = given().
+       // get summary
+        /*issueSummary = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
                 body(b).
@@ -253,7 +181,7 @@ public class MyIssue {
                 extract().path("summary");
         System.out.println(issueSummary);
 
-        // remove summary
+       /* // remove summary
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
         String bo = ("{  \n" +
                 "\" +\n" +
@@ -286,24 +214,7 @@ public class MyIssue {
         // create issue
 
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String b = "{\n" +
-                "\n" +
-                "\t\"fields\": {\n" +
-                "\t\t\"project\": {\n" +
-                "\t\t\t\"id\": \"10315\"\n" +
-                "\t\t},\n" +
-                "\t\t\"summary\": \"RESTAssured summary\",\n" +
-                "\t\t\"issuetype\": {\n" +
-                "\t\t\t\"id\": \"10004\"\n" +
-                "\t\t},\n" +
-                "\t\t\"assignee\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t},\n" +
-                "\t\t\"reporter\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t}\n" +
-                "\t}\n" +
-                "}\n";
+        String b = jiraJSONFixture.generateJSONForSampleIssue();
 
         IssueKey = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
@@ -357,24 +268,7 @@ public class MyIssue {
     @Test
     public void searchFilter()
     {  // create issue
-        String b = "{\n" +
-                "\n" +
-                "\t\"fields\": {\n" +
-                "\t\t\"project\": {\n" +
-                "\t\t\t\"id\": \"10315\"\n" +
-                "\t\t},\n" +
-                "\t\t\"summary\": \"RESTAssured summary\",\n" +
-                "\t\t\"issuetype\": {\n" +
-                "\t\t\t\"id\": \"10004\"\n" +
-                "\t\t},\n" +
-                "\t\t\"assignee\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t},\n" +
-                "\t\t\"reporter\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t}\n" +
-                "\t}\n" +
-                "}\n";
+        String b =jiraJSONFixture.generateJSONForSampleIssue();
 
         IssueKey = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
@@ -426,24 +320,7 @@ public class MyIssue {
             // create issue
     {
 
-        String b = "{\n" +
-                "\n" +
-                "\t\"fields\": {\n" +
-                "\t\t\"project\": {\n" +
-                "\t\t\t\"id\": \"10315\"\n" +
-                "\t\t},\n" +
-                "\t\t\"summary\": \"RESTAssured summary\",\n" +
-                "\t\t\"issuetype\": {\n" +
-                "\t\t\t\"id\": \"10004\"\n" +
-                "\t\t},\n" +
-                "\t\t\"assignee\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t},\n" +
-                "\t\t\"reporter\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t}\n" +
-                "\t}\n" +
-                "}\n";
+        String b =jiraJSONFixture.generateJSONForSampleIssue();
 
         IssueKey = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
@@ -481,10 +358,7 @@ public class MyIssue {
     @Test
     public void negativeTestLogin(){
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String b = "{\n" +
-                "    \"username\": \"katherinebilous\",\n" +
-                "    \"password\": \"Polis484)\"\n" +
-                "} ";
+        String b = jiraJSONFixture.generateJSONForLogin();
         sessionId = given().
                 header("Content-Type", "application/json").
                 body(b).
@@ -498,10 +372,7 @@ public class MyIssue {
 
 
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body = "{\n" +
-                "    \"username\": \"katherinebilous\",\n" +
-                "    \"password\": \"Polis485)\"\n" +
-                "} ";
+        String body = jiraJSONFixture.generateJSONForLogin();
         given().
                 header("Content-Type", "application/json").
                 body(body).
@@ -513,24 +384,7 @@ public class MyIssue {
     @Test
     public void  addComment(){
         // create issue
-        String b = "{\n" +
-                "\n" +
-                "\t\"fields\": {\n" +
-                "\t\t\"project\": {\n" +
-                "\t\t\t\"id\": \"10315\"\n" +
-                "\t\t},\n" +
-                "\t\t\"summary\": \"RESTAssured summary\",\n" +
-                "\t\t\"issuetype\": {\n" +
-                "\t\t\t\"id\": \"10004\"\n" +
-                "\t\t},\n" +
-                "\t\t\"assignee\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t},\n" +
-                "\t\t\"reporter\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t}\n" +
-                "\t}\n" +
-                "}\n";
+        String b =jiraJSONFixture.generateJSONForSampleIssue();
 
         IssueKey = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
@@ -589,25 +443,7 @@ public class MyIssue {
     public  void  getComment() {
 
         // create issue
-        String b = "{\n" +
-                "\n" +
-                "\t\"fields\": {\n" +
-                "\t\t\"project\": {\n" +
-                "\t\t\t\"id\": \"10315\"\n" +
-                "\t\t},\n" +
-                "\t\t\"summary\": \"RESTAssured summary\",\n" +
-                "\t\t\"issuetype\": {\n" +
-                "\t\t\t\"id\": \"10004\"\n" +
-                "\t\t},\n" +
-                "\t\t\"assignee\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t},\n" +
-                "\t\t\"reporter\": {\n" +
-                "\t\t\t\"name\": \"katherinebilous\"\n" +
-                "\t\t}\n" +
-                "\t}\n" +
-                "}\n";
-
+        String b = jiraJSONFixture.generateJSONForSampleIssue();
         IssueKey = given().
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
@@ -680,24 +516,7 @@ public class MyIssue {
         @Test
         public  void deleteComment(){
             // create issue
-            String b = "{\n" +
-                    "\n" +
-                    "\t\"fields\": {\n" +
-                    "\t\t\"project\": {\n" +
-                    "\t\t\t\"id\": \"10315\"\n" +
-                    "\t\t},\n" +
-                    "\t\t\"summary\": \"RESTAssured summary\",\n" +
-                    "\t\t\"issuetype\": {\n" +
-                    "\t\t\t\"id\": \"10004\"\n" +
-                    "\t\t},\n" +
-                    "\t\t\"assignee\": {\n" +
-                    "\t\t\t\"name\": \"katherinebilous\"\n" +
-                    "\t\t},\n" +
-                    "\t\t\"reporter\": {\n" +
-                    "\t\t\t\"name\": \"katherinebilous\"\n" +
-                    "\t\t}\n" +
-                    "\t}\n" +
-                    "}\n";
+            String b =jiraJSONFixture.generateJSONForSampleIssue();
 
             IssueKey = given().
                     header("Cookie", "JSESSIONID=" + sessionId).
