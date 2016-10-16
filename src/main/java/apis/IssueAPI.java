@@ -6,30 +6,65 @@ public class IssueAPI extends RequestSender {
 
     RequestSender requestSender = new RequestSender();
 
-    public void createIssue(String body) {
+    public void secureCreateIssue(String body) {
         requestSender
-                .createRequest(body)
+                .secureCreateRequest(body)
                 .post(ApiUrls.ISSUE.getUri());
 
     }
 
+
     public void deleteIssue(String issueId) {
         requestSender
-                .createRequest()
+                .secureCreateRequest()
                 .delete(ApiUrls.ISSUE.getUri(issueId));
 
     }
-
-    public void addComment(String issueId, String body) {
+    public  void secureDeleteIssue(String issueId){
         requestSender
-                .createRequest(body)
+                .secureCreateRequest()
+                .delete(ApiUrls.ISSUE.getUri(issueId));
+    }
+
+    public void secureAddComment(String issueId, String body) {
+        requestSender
+                .secureCreateRequest(body)
                 .post(ApiUrls.ISSUE.getUri() + "/" + issueId + "/comment");
 
     }
-    public void getIssue (String issueId){
+    public void getSecureIssue (String issueId){
         requestSender
-                .createRequest()
+                .secureCreateRequest()
                 .get(ApiUrls.ISSUE.getUri(issueId));
     }
+    public void editSummarySecure (String issueId, String body){
+        requestSender
+                .secureCreateRequest(body)
+                .put(ApiUrls.ISSUE.getUri(issueId));
+    }
+    public void secureGetComment(String issueId, String CommentId){
+        requestSender
+                .secureCreateRequest()
+                .get(ApiUrls.ISSUE.getUri()+"/"+issueId+"/comment/"+CommentId);
+    }
+    public void changeIssueType (String issueId, String body){
+        requestSender
+                .secureCreateRequest(body)
+                .put(ApiUrls.ISSUE.getUri(issueId));
+
+    }
+    public void secureSearch (String issueId, String body){
+        requestSender
+                .secureCreateRequest(body)
+                .get(ApiUrls.SEARCH.getUri(issueId));
+    }
+    public void secureAssign (String issueId, String body){
+        requestSender
+                .secureCreateRequest(body)
+                .put(ApiUrls.ISSUE.getUri(issueId)+"/assignee");
+
+    }
+
+
 
 }

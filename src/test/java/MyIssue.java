@@ -1,3 +1,4 @@
+import apis.ApiUrls;
 import apis.IssueAPI;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
@@ -34,9 +35,12 @@ public class MyIssue {
         RequestSender requestSender= new RequestSender();
         requestSender.authenticate();
 
+
         sessionId =requestSender.extractResponseByPath("session.value");
+
         assertNotNull(requestSender.extractResponseByPath("session.value"));
         System.out.println(requestSender.extractResponseByPath("session.value"));
+
 
     }
 
@@ -49,11 +53,19 @@ public class MyIssue {
         // создание Issue
 
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.createIssue(issue);
+        issueAPI.secureCreateIssue(issue);
         // delete issue
 
         IssueKey = issueAPI.extractResponseByPath("id");
-        issueAPI.deleteIssue(IssueKey);
+        System.out.println(IssueKey);
+        issueAPI.secureDeleteIssue(IssueKey);
+
+
+        assertEquals(issueAPI.response.statusCode(), 204);
+        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+
+
+
 
 
     }
@@ -66,11 +78,12 @@ public class MyIssue {
 
         // cоздать Issue
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.createIssue(issue);
+        issueAPI.secureCreateIssue(issue);
 
-        // удалить Issue
-        IssueKey = issueAPI.extractResponseByPath("id");
-        issueAPI.deleteIssue(IssueKey);
+       // удалить Issue
+       IssueKey = issueAPI.extractResponseByPath("key");
+        System.out.println(IssueKey);
+       issueAPI.secureDeleteIssue(IssueKey);
 
 
         assertEquals(issueAPI.response.statusCode(), 204);
@@ -93,9 +106,13 @@ public class MyIssue {
 
         // получить Issue
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.getIssue(IssueKey);
+        issueAPI.secureCreateIssue(issue);
+        IssueKey = issueAPI.extractResponseByPath("id");
+
+        issueAPI.getSecureIssue(IssueKey);
+        System.out.println(IssueKey);
         assertEquals(issueAPI.response.statusCode(), 200);
-        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+       assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
 
 
 
@@ -110,26 +127,28 @@ public class MyIssue {
 
     @Test()
     public void editSummary() {
+        //  не меняет самери
 
         // create issue
 
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String b = jiraJSONFixture.generateJSONForSampleIssue();
 
-        IssueKey = given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(b).
-                when().
-                post("/rest/api/2/issue").
-                then().
-                statusCode(201).
-                extract().path("key");
-        System.out.println(IssueKey);
+        String issue = jiraJSONFixture.generateJSONForSampleIssue();
+        IssueAPI issueAPI=new IssueAPI();
+        issueAPI.secureCreateIssue(issue);
+        IssueKey = issueAPI.extractResponseByPath("key");
+
+        String editSummary=jiraJSONFixture.generateJSONForEditSummary();
+        issueAPI.editSummarySecure(IssueKey, editSummary);
+
+        assertEquals(issueAPI.response.statusCode(), 204);
+        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+
+
 
         // edit summary
 
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
+
+     /*   RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
         String body = ("{  \n" +
                 "   \"update\":{  \n" +
                 "      \"summary\":[  \n" +
@@ -139,75 +158,44 @@ public class MyIssue {
                 "      ]\n" +
                 "   }\n" +
                 "}");
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(body).
-                when().
-                put("/rest/api/2/issue/"+IssueKey).then().statusCode(204);
 
-       // get summary
-        /*issueSummary = given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(b).
-                when().
-                post("/rest/api/2/issue").
-                then().
-                statusCode(201).
-                extract().path("summary");
-        System.out.println(issueSummary);
-
-       /* // remove summary
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String bo = ("{  \n" +
-                "\" +\n" +
-                "                \"   \\\"update\\\":{  \\n\" +\n" +
-                "                \"      \\\"summary\\\":[  \\n\" +\n" +
-                "                \"         {  \\n\" +\n" +
-                "                \"            \\\"remove\\\":\\\"new edit summary\\\"\\n\" +\n" +
-                "                \"         }\\n\" +\n" +
-                "                \"      ]\\n\" +\n" +
-                "                \"   }\\n\" +\n" +
-                "                \"}");
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(bo).
-                when().
-                delete("/rest/api/2/issue/"+IssueKey).then().statusCode(204);*/
+                put("/rest/api/2/issue/"+IssueKey).then().statusCode(204);*/
 
 
-        // delete issue
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                when().
-                delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);
 
     }
     @Test
     public void changeIssueType(){
-        // create issue
+        // не меняет тип бага
 
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String b = jiraJSONFixture.generateJSONForSampleIssue();
 
-        IssueKey = given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(b).
-                when().
-                post("/rest/api/2/issue").
-                then().
-                statusCode(201).
-                extract().path("key");
-        System.out.println(IssueKey);
+
+        String issue = jiraJSONFixture.generateJSONForSampleIssue();
+
+        // cоздать Issue
+        IssueAPI issueAPI = new IssueAPI();
+        issueAPI.secureCreateIssue(issue);
+        IssueKey = issueAPI.extractResponseByPath("key");
+
+        //change issue type
+        String issuetype=jiraJSONFixture.generateJSONForIssueType();
+        issueAPI.changeIssueType( IssueKey, issuetype);
+
+
+
+        assertEquals(issueAPI.response.statusCode(), 204);
+        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+
+
+
+
+
+
 
 
         // change issue type
 
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
+       /* RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
         String body ="{\n" +
                 " \"fields\": \n" +
                 " {\n" +
@@ -219,49 +207,40 @@ public class MyIssue {
                 header("Content-Type", "application/json").
                 body(body).
                 when().
-                put("/rest/api/2/issue/"+IssueKey).then().statusCode(204);
+                put("/rest/api/2/issue/"+IssueKey).then().statusCode(204);*/
 
-       /* // get issue type
-        issueType = given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(b).
-                when().
-                post("/rest/api/2/issue").
-                then().
-                statusCode(201).
-                extract().path("issuetype");
-        System.out.println(issueType);*/
 
-        // delete issue
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                when().
-                delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);
 
 
     }
     @Test
     public void searchFilter()
-    {  // create issue
-        String b =jiraJSONFixture.generateJSONForSampleIssue();
+    { // не работает
+        String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
-        IssueKey = given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(b).
-                when().
-                post("/rest/api/2/issue").
-                then().
-                statusCode(201).
-                extract().path("key");
-        System.out.println(IssueKey);
+        // cоздать Issue
+        IssueAPI issueAPI = new IssueAPI();
+        issueAPI.secureCreateIssue(issue);
+        IssueKey = issueAPI.extractResponseByPath("key");
+
+        String search=jiraJSONFixture.generateJSONForSearchFilter();
+        issueAPI.secureSearch(IssueKey, search);
+
+
+        assertEquals(issueAPI.response.statusCode(), 200);
+        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+
+
+
+
+
+
+
 
 
         // search filter
 
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
+      /*  RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
         String body =" {\n" +
                 "    \"jql\": \"project = QAAUT\",\n" +
                 "    \"startAt\": 0,\n" +
@@ -277,17 +256,8 @@ public class MyIssue {
                 header("Content-Type", "application/json").
                 body(body).
                 when().
-                post("/rest/api/2/search");
-        assertTrue(response.getStatusCode()==200);
+                post("/rest/api/2/search");*/
 
-        System.out.println(response.asString());
-
-        // delete issue
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                when().
-                delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);
 
 
 
@@ -295,24 +265,34 @@ public class MyIssue {
     @Test
     public void Assign ()
             // create issue
+
     {
 
-        String b =jiraJSONFixture.generateJSONForSampleIssue();
+        String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
-        IssueKey = given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(b).
-                when().
-                post("/rest/api/2/issue").
-                then().
-                statusCode(201).
-                extract().path("key");
-        System.out.println(IssueKey);
+        // cоздать Issue
+        IssueAPI issueAPI = new IssueAPI();
+        issueAPI.secureCreateIssue(issue);
+
+
+        IssueKey = issueAPI.extractResponseByPath("key");
+
+
+        String assign = jiraJSONFixture.generateJSONForAssign();
+        issueAPI.secureAssign(IssueKey,assign);
+
+
+        assertEquals(issueAPI.response.statusCode(), 204);
+        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+
+
+
+
+
 
         // assign
 
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
+      /*  RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
         String body =" {\n" +
                 "    \"name\": \"a.a.piluck\"\n" +
                 "}";
@@ -321,94 +301,29 @@ public class MyIssue {
                 header("Content-Type", "application/json").
                 body(body).
                 when().
-                put("/rest/api/2/issue/"+IssueKey+"/assignee").then().statusCode(204);
-
-        // delete issue
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                when().
-                delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);
+                put("/rest/api/2/issue/"+IssueKey+"/assignee").then().statusCode(204);*/
 
 
     }
-    @Test
-    public void negativeTestLogin(){
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String b = jiraJSONFixture.generateJSONForLogin();
-        sessionId = given().
-                header("Content-Type", "application/json").
-                body(b).
-                when().
-                post("/rest/auth/1/session").
-                then().
-                extract().
-                path("session.value");
 
-        // negativeTestLogin
-
-
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body = jiraJSONFixture.generateJSONForLogin();
-        given().
-                header("Content-Type", "application/json").
-                body(body).
-                when().
-                post("/rest/auth/1/session").
-                then().statusCode(401);
-
-    }
     @Test
     public void  addComment(){
         // create issue
-        String b =jiraJSONFixture.generateJSONForSampleIssue();
+        String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
-        IssueKey = given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(b).
-                when().
-                post("/rest/api/2/issue").
-                then().
-                statusCode(201).
-                extract().path("key");
-        System.out.println(IssueKey);
+        IssueAPI issueAPI = new IssueAPI();
+        issueAPI.secureCreateIssue(issue);
+        IssueKey = issueAPI.extractResponseByPath("key");
+
 
         // add comment
+        String comment = jiraJSONFixture.generateJSONForAddComment();
+        issueAPI.secureAddComment(IssueKey, comment);
+        System.out.println(IssueKey);
 
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body ="{\n" +
-                "    \"body\": \"This is a comment regarding the quality of the response.\"\n" +
-                "}";
+        // delete issue
 
-
-             commentId= given().
-                        header("Cookie", "JSESSIONID=" + sessionId).
-                        header("Content-Type", "application/json").
-                        body(body).
-                        when().
-                        post("rest/api/2/issue/"+IssueKey+"/comment").then().statusCode(201).extract().path("id");
-       // assertTrue(response.getStatusCode()==201);
-        System.out.println(commentId);
-
-        // удаление комментария
-       RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-
-
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                when().
-                delete("/rest/api/2/issue/"+IssueKey+"/comment/"+commentId).then().statusCode(204);
-
-        // удаление issue
-
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                when().
-                delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);
-
+        issueAPI.secureDeleteIssue(IssueKey);
 
     }
 
@@ -418,6 +333,24 @@ public class MyIssue {
 
     @Test
     public  void  getComment() {
+        // create issue
+       /* String issue =jiraJSONFixture.generateJSONForSampleIssue();
+
+        IssueAPI issueAPI = new IssueAPI();
+        issueAPI.secureCreateIssue(issue);
+        IssueKey = issueAPI.extractResponseByPath("key");
+
+
+        // add comment
+        String comment = jiraJSONFixture.generateJSONForAddComment();
+        issueAPI.secureAddComment(IssueKey, comment);
+        commentId=issueAPI.extractResponseByPath("id");
+
+        // get comment
+
+        System.out.println(commentId);
+        issueAPI.secureGetComment(commentId);
+
 
         // create issue
         String b = jiraJSONFixture.generateJSONForSampleIssue();
@@ -449,7 +382,7 @@ public class MyIssue {
         // assertTrue(response.getStatusCode()==201);
         System.out.println(commentId);
 
-        /*//get comment
+        //get comment
 
         RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
 
@@ -460,7 +393,7 @@ public class MyIssue {
                         header("Content-Type", "application/json").
                         when().
                         get("/rest/api/2/issue/"+IssueKey+"/comment/"+commentId).then().statusCode(201).extract().path("body");
-        System.out.println(Comment);*/
+        System.out.println(Comment);
 
 
         //delete comment
@@ -479,7 +412,7 @@ public class MyIssue {
                 header("Cookie", "JSESSIONID=" + sessionId).
                 header("Content-Type", "application/json").
                 when().
-                delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);
+                delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);*/
 
 
 
@@ -492,62 +425,22 @@ public class MyIssue {
 
         @Test
         public  void deleteComment(){
-            // create issue
-            String b =jiraJSONFixture.generateJSONForSampleIssue();
+            /// create issue
+            String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
-            IssueKey = given().
-                    header("Cookie", "JSESSIONID=" + sessionId).
-                    header("Content-Type", "application/json").
-                    body(b).
-                    when().
-                    post("/rest/api/2/issue").
-                    then().
-                    statusCode(201).
-                    extract().path("key");
-            System.out.println(IssueKey);
+            IssueAPI issueAPI = new IssueAPI();
+            issueAPI.secureCreateIssue(issue);
+            IssueKey = issueAPI.extractResponseByPath("key");
+
 
             // add comment
-
-            RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-            String body ="{\n" +
-                    "    \"body\": \"This is a comment regarding the quality of the response.\"\n" +
-                    "}";
-
-
-            commentId= given().
-                    header("Cookie", "JSESSIONID=" + sessionId).
-                    header("Content-Type", "application/json").
-                    body(body).
-                    when().
-                    post("rest/api/2/issue/"+IssueKey+"/comment").then().statusCode(201).extract().path("id");
-            // assertTrue(response.getStatusCode()==201);
-            System.out.println(commentId);
-
-
-
-            // delete comment
-            RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-
-
-            given().
-                    header("Cookie", "JSESSIONID=" + sessionId).
-                    header("Content-Type", "application/json").
-                    when().
-                    delete("/rest/api/2/issue/"+IssueKey+"/comment/"+commentId).then().statusCode(204);
+            String comment = jiraJSONFixture.generateJSONForAddComment();
+            issueAPI.secureAddComment(IssueKey, comment);
+            System.out.println(IssueKey);
 
             // delete issue
-            given().
-                    header("Cookie", "JSESSIONID=" + sessionId).
-                    header("Content-Type", "application/json").
-                    when().
-                    delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);
 
-
-
-
-
-
-
+            issueAPI.secureDeleteIssue(IssueKey);
         }
 
     }
