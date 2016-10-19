@@ -62,11 +62,13 @@ public class MyIssue {
         IssueKey = issueAPI.extractResponseByPath("key");
         System.out.println(IssueKey);
 
+        issueAPI.deleteIssue(IssueKey);
+
 
         assertEquals(issueAPI.response.statusCode(), 204);
         assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
 
-        issueAPI.deleteIssue(IssueKey);
+
 
 
 
@@ -94,7 +96,7 @@ public class MyIssue {
 
 
 
-       assertEquals(issueAPI.response.statusCode(), 204);
+       assertEquals(issueAPI.response.statusCode(), 201);
         assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
         issueAPI.deleteIssue(IssueKey);
 

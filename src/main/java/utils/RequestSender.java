@@ -15,7 +15,7 @@ public class RequestSender {
     public static String TOKENKEYTWO = null;
     public final static ContentType CONTENT_TYPE = ContentType.JSON;
     public   RequestSpecification requestSpecification = null;
-    public   Response response = null;
+    public    Response response = null;
 
     public RequestSender() {
         authenticate();
