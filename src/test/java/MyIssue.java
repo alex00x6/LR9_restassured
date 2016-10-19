@@ -162,21 +162,7 @@ public class MyIssue {
 
 
 
-        // edit summary
 
-
-     /*   RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body = ("{  \n" +
-                "   \"update\":{  \n" +
-                "      \"summary\":[  \n" +
-                "         {  \n" +
-                "            \"set\":\"new edit summary\"\n" +
-                "         }\n" +
-                "      ]\n" +
-                "   }\n" +
-                "}");
-
-                put("/rest/api/2/issue/"+IssueKey).then().statusCode(204);*/
 
 
 
@@ -215,21 +201,6 @@ public class MyIssue {
 
 
 
-        // change issue type
-
-       /* RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body ="{\n" +
-                " \"fields\": \n" +
-                " {\n" +
-                "  \"issuetype\": {\"id\": \"10003\"}\n" +
-                " }\n" +
-                "}";
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(body).
-                when().
-                put("/rest/api/2/issue/"+IssueKey).then().statusCode(204);*/
 
 
 
@@ -303,18 +274,6 @@ public class MyIssue {
 
 
 
-        // assign
-
-      /*  RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body =" {\n" +
-                "    \"name\": \"a.a.piluck\"\n" +
-                "}";
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(body).
-                when().
-                put("/rest/api/2/issue/"+IssueKey+"/assignee").then().statusCode(204);*/
 
 
     }
