@@ -10,12 +10,12 @@ import fixture.JiraJSONFixture;
 import static com.jayway.restassured.RestAssured.given;
 
 public class RequestSender {
-    public static String JSESSIONID = null;
+    public static   String JSESSIONID = null;
     public static String TOKENKEYONE = null;
     public static String TOKENKEYTWO = null;
     public final static ContentType CONTENT_TYPE = ContentType.JSON;
-    public static RequestSpecification requestSpecification = null;
-    public static Response response = null;
+    public   RequestSpecification requestSpecification = null;
+    public   Response response = null;
 
     public RequestSender() {
         authenticate();
@@ -23,7 +23,7 @@ public class RequestSender {
 
 
     public void authenticate() {
-        RestAssured.baseURI = "https://katherinetestsapi.atlassian.net";
+        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080/";
 
         JiraJSONFixture jiraJSONFixture = new JiraJSONFixture();
         String credentials = jiraJSONFixture.generateJSONForLogin();
@@ -32,16 +32,29 @@ public class RequestSender {
                 .post(ApiUrls.LOGIN.getUri());
 
         this.JSESSIONID = response.then().extract().path("session.value");
-        this.TOKENKEYONE = response.then().extract().cookie("studio.crowd.tokenkey");
-        this.TOKENKEYTWO = response.then().extract().cookie("atlassian.xsrf.token");
+    }
+
+    public void secureAuthenticate() {
+        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080/";
+
+        JiraJSONFixture jiraJSONFixture = new JiraJSONFixture();
+        String credentials = jiraJSONFixture.generateJSONForLogin();
+
+        secureCreateRequest(credentials)
+                .post(ApiUrls.LOGIN.getUri());
+
+        this.JSESSIONID = response.then().extract().path("session.value");
+         this.TOKENKEYONE = response.then().extract().cookie("studio.crowd.tokenkey");
+         this.TOKENKEYTWO = response.then().extract().cookie("atlassian.xsrf.token");
+
     }
 
     public RequestSender secureCreateRequest(String body) {
         this.createRequestSpecification()
                 .addHeader("Content-Type", CONTENT_TYPE.toString())
                 .addHeader("Cookie", "JSESSIONID=" + RequestSender.JSESSIONID)
-                .addHeader("Cookie", "studio.crowd.tokenkey=" + RequestSender.TOKENKEYONE)
-                .addHeader("Cookie", "atlassian.xsrf.token=" + RequestSender.TOKENKEYTWO)
+               // .addHeader("Cookie", "studio.crowd.tokenkey=" + RequestSender.TOKENKEYONE)
+               // .addHeader("Cookie", "atlassian.xsrf.token=" + RequestSender.TOKENKEYTWO)
                 .addBody(body);
         return this;
     }
@@ -80,7 +93,7 @@ public class RequestSender {
         return response.then().extract().path(path);
     }
 
-    public RequestSender createRequest() {
+    public RequestSender voidCreateRequest() {
         this.createRequestSpecification()
                 .addHeader("Content-Type", CONTENT_TYPE.toString())
                 .addHeader("Cookie", "JSESSIONID=" + RequestSender.JSESSIONID);

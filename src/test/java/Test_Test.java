@@ -187,7 +187,7 @@ public class Test_Test {
                 when().
                 post("rest/api/2/issue/QAAUT-320/comment");
         assertTrue(response.getStatusCode()==201);
-        System.out.println(response.path("id"));
+        System.out.println(String.valueOf(response.path("id")));
 
 
 

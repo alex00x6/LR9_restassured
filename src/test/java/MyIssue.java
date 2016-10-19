@@ -1,29 +1,29 @@
-import apis.ApiUrls;
 import apis.IssueAPI;
-import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
-import com.jayway.restassured.response.Response;
 import fixture.JiraJSONFixture;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.w3c.dom.Comment;
 import utils.RequestSender;
 
-
-import static com.jayway.restassured.RestAssured.given;
-import static com.jayway.restassured.RestAssured.sessionId;
-import static org.junit.Assert.assertEquals;
-import static org.testng.AssertJUnit.assertNotNull;
-import static org.testng.AssertJUnit.assertTrue;
-
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 
 public class MyIssue {
-       String sessionId = "";
+
+    String sessionId = "";
     String IssueKey = "";
     String commentId="";
     String issueSummary="";
     String issueType="";
     String Comment="";
+
+
+
+
+
+
+
 
     JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
 
@@ -33,6 +33,8 @@ public class MyIssue {
     public void login() {
 
         RequestSender requestSender= new RequestSender();
+        long id = Thread.currentThread().getId();
+        System.out.println("BeforeTest. Thread id is: " + id);
         requestSender.authenticate();
 
 
@@ -46,6 +48,8 @@ public class MyIssue {
 
     @Test
     public void DeleteIssue() {
+        long id = Thread.currentThread().getId();
+        System.out.println("DeleteIssue. Thread id is: " + id);
 
 
 
@@ -72,6 +76,10 @@ public class MyIssue {
 
     @Test
     public void CreateIssue() {
+        long id = Thread.currentThread().getId();
+        System.out.println("CreateIssue. Thread id is: " + id);
+
+
 
 
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
@@ -94,11 +102,14 @@ public class MyIssue {
     }
     @Test
     public void getIssue(){
+        long id = Thread.currentThread().getId();
+        System.out.println("getIssue. Thread id is: " + id);
 
 
 
 
-       String issue = jiraJSONFixture.generateJSONForSampleIssue();
+
+        String issue = jiraJSONFixture.generateJSONForSampleIssue();
         // создание Issue
 
 
@@ -127,6 +138,9 @@ public class MyIssue {
 
     @Test()
     public void editSummary() {
+        long id = Thread.currentThread().getId();
+        System.out.println("editSummary. Thread id is: " + id);
+
         //  не меняет самери
 
         // create issue
@@ -142,6 +156,9 @@ public class MyIssue {
 
         assertEquals(issueAPI.response.statusCode(), 204);
         assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+
+
+        issueAPI.deleteIssue(IssueKey);
 
 
 
@@ -166,6 +183,9 @@ public class MyIssue {
     }
     @Test
     public void changeIssueType(){
+        long id = Thread.currentThread().getId();
+        System.out.println("changeIssueType. Thread id is: " + id);
+
         // не меняет тип бага
 
 
@@ -185,6 +205,8 @@ public class MyIssue {
 
         assertEquals(issueAPI.response.statusCode(), 204);
         assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+
+        issueAPI.deleteIssue(IssueKey);
 
 
 
@@ -215,7 +237,10 @@ public class MyIssue {
     }
     @Test
     public void searchFilter()
-    { // не работает
+    {  long id = Thread.currentThread().getId();
+        System.out.println("searchFilter. Thread id is: " + id);
+
+        // не работает
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
         // cоздать Issue
@@ -229,6 +254,9 @@ public class MyIssue {
 
         assertEquals(issueAPI.response.statusCode(), 200);
         assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+
+
+        issueAPI.deleteIssue(IssueKey);
 
 
 
@@ -266,7 +294,9 @@ public class MyIssue {
     public void Assign ()
             // create issue
 
-    {
+    { long id = Thread.currentThread().getId();
+        System.out.println("Assign. Thread id is: " + id);
+
 
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
@@ -284,6 +314,9 @@ public class MyIssue {
 
         assertEquals(issueAPI.response.statusCode(), 204);
         assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+
+
+        issueAPI.deleteIssue(IssueKey);
 
 
 
@@ -308,6 +341,10 @@ public class MyIssue {
 
     @Test
     public void  addComment(){
+
+        long id = Thread.currentThread().getId();
+        System.out.println("addComment. Thread id is: " + id);
+
         // create issue
         String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
@@ -425,6 +462,10 @@ public class MyIssue {
 
         @Test
         public  void deleteComment(){
+
+            long id = Thread.currentThread().getId();
+            System.out.println("deleteComment. Thread id is: " + id);
+
             /// create issue
             String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
@@ -442,6 +483,8 @@ public class MyIssue {
 
             issueAPI.secureDeleteIssue(IssueKey);
         }
+
+
 
     }
 

@@ -12,7 +12,7 @@ public class JiraJSONFixture {
 
     public String generateJSONForLogin() {
         JSONObject credentials = new JSONObject();
-        credentials.put("username", "admin");
+        credentials.put("username", "katherinebilous");
         credentials.put("password", "Polis484)");
 
         return credentials.toJSONString();
@@ -26,11 +26,11 @@ public class JiraJSONFixture {
         JSONObject reporter = new JSONObject();
 
         fields.put("summary", "RESTAssured summary");
-        project.put("key", "TEST");
-        issuetype.put("id","10003");
-        assignee.put("name","admin");
-        reporter.put("name","admin");
-        issue.put("username", "admin");
+        project.put("id", "10315");
+        issuetype.put("id","10004");
+        assignee.put("name","katherinebilous");
+        reporter.put("name","katherinebilous");
+        issue.put("username", "katherinebilous");
         issue.put("password", "Polis484)");
         issue.put("fields", fields);
         fields.put("project",project);
@@ -91,7 +91,7 @@ public class JiraJSONFixture {
     }
     public String generateJSONForAssign(){
         JSONObject assignValue =new JSONObject();
-        assignValue.put("name", "voltage007");
+        assignValue.put("name", "katherinebilous");
         return  generateJSONForSampleIssue();
 
     }
