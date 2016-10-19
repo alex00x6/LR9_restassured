@@ -39,7 +39,6 @@ public class MyIssue {
 
 
         sessionId =requestSender.extractResponseByPath("session.value");
-
         assertNotNull(requestSender.extractResponseByPath("session.value"));
         System.out.println(requestSender.extractResponseByPath("session.value"));
 
@@ -57,17 +56,17 @@ public class MyIssue {
         // создание Issue
 
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.secureCreateIssue(issue);
+        issueAPI.createRequest(issue);
         // delete issue
 
-        IssueKey = issueAPI.extractResponseByPath("id");
+        IssueKey = issueAPI.extractResponseByPath("key");
         System.out.println(IssueKey);
-        issueAPI.secureDeleteIssue(IssueKey);
 
 
         assertEquals(issueAPI.response.statusCode(), 204);
         assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
 
+        issueAPI.deleteIssue(IssueKey);
 
 
 
@@ -86,17 +85,18 @@ public class MyIssue {
 
         // cоздать Issue
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.secureCreateIssue(issue);
+        issueAPI.createRequest(issue);
 
        // удалить Issue
        IssueKey = issueAPI.extractResponseByPath("key");
+
         System.out.println(IssueKey);
-       issueAPI.secureDeleteIssue(IssueKey);
 
 
-        assertEquals(issueAPI.response.statusCode(), 204);
+
+       assertEquals(issueAPI.response.statusCode(), 204);
         assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
-
+        issueAPI.deleteIssue(IssueKey);
 
 
     }
@@ -117,7 +117,7 @@ public class MyIssue {
 
         // получить Issue
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.secureCreateIssue(issue);
+        issueAPI.createRequest(issue);
         IssueKey = issueAPI.extractResponseByPath("id");
 
         issueAPI.getSecureIssue(IssueKey);
@@ -136,7 +136,7 @@ public class MyIssue {
     }
 
 
-    @Test()
+    @Test(enabled = false)
     public void editSummary() {
         long id = Thread.currentThread().getId();
         System.out.println("editSummary. Thread id is: " + id);
@@ -148,7 +148,7 @@ public class MyIssue {
 
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
         IssueAPI issueAPI=new IssueAPI();
-        issueAPI.secureCreateIssue(issue);
+        issueAPI.createRequest(issue);
         IssueKey = issueAPI.extractResponseByPath("key");
 
         String editSummary=jiraJSONFixture.generateJSONForEditSummary();
@@ -181,7 +181,7 @@ public class MyIssue {
 
 
     }
-    @Test
+    @Test(enabled = false)
     public void changeIssueType(){
         long id = Thread.currentThread().getId();
         System.out.println("changeIssueType. Thread id is: " + id);
@@ -194,7 +194,7 @@ public class MyIssue {
 
         // cоздать Issue
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.secureCreateIssue(issue);
+        issueAPI.createRequest(issue);
         IssueKey = issueAPI.extractResponseByPath("key");
 
         //change issue type
@@ -245,7 +245,7 @@ public class MyIssue {
 
         // cоздать Issue
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.secureCreateIssue(issue);
+        issueAPI.createRequest(issue);
         IssueKey = issueAPI.extractResponseByPath("key");
 
         String search=jiraJSONFixture.generateJSONForSearchFilter();
@@ -266,31 +266,11 @@ public class MyIssue {
 
 
 
-        // search filter
-
-      /*  RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body =" {\n" +
-                "    \"jql\": \"project = QAAUT\",\n" +
-                "    \"startAt\": 0,\n" +
-                "    \"maxResults\": 15,\n" +
-                "    \"fields\": [\n" +
-                "        \"summary\",\n" +
-                "        \"status\",\n" +
-                "        \"assignee\"\n" +
-                "    ]\n" +
-                "}";
-        Response response= given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(body).
-                when().
-                post("/rest/api/2/search");*/
-
 
 
 
     }
-    @Test
+    @Test(enabled = false)
     public void Assign ()
             // create issue
 
@@ -302,7 +282,7 @@ public class MyIssue {
 
         // cоздать Issue
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.secureCreateIssue(issue);
+        issueAPI.createRequest(issue);
 
 
         IssueKey = issueAPI.extractResponseByPath("key");
@@ -349,7 +329,7 @@ public class MyIssue {
         String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.secureCreateIssue(issue);
+        issueAPI.createRequest(issue);
         IssueKey = issueAPI.extractResponseByPath("key");
 
 
@@ -360,7 +340,7 @@ public class MyIssue {
 
         // delete issue
 
-        issueAPI.secureDeleteIssue(IssueKey);
+        issueAPI.deleteIssue(IssueKey);
 
     }
 
@@ -368,93 +348,7 @@ public class MyIssue {
 
 
 
-    @Test
-    public  void  getComment() {
-        // create issue
-       /* String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
-        IssueAPI issueAPI = new IssueAPI();
-        issueAPI.secureCreateIssue(issue);
-        IssueKey = issueAPI.extractResponseByPath("key");
-
-
-        // add comment
-        String comment = jiraJSONFixture.generateJSONForAddComment();
-        issueAPI.secureAddComment(IssueKey, comment);
-        commentId=issueAPI.extractResponseByPath("id");
-
-        // get comment
-
-        System.out.println(commentId);
-        issueAPI.secureGetComment(commentId);
-
-
-        // create issue
-        String b = jiraJSONFixture.generateJSONForSampleIssue();
-        IssueKey = given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(b).
-                when().
-                post("/rest/api/2/issue").
-                then().
-                statusCode(201).
-                extract().path("key");
-        System.out.println(IssueKey);
-
-        // add comment
-
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-        String body ="{\n" +
-                "    \"body\": \"This is a comment regarding the quality of the response.\"\n" +
-                "}";
-
-
-        commentId= given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                body(body).
-                when().
-                post("rest/api/2/issue/"+IssueKey+"/comment").then().statusCode(201).extract().path("id");
-        // assertTrue(response.getStatusCode()==201);
-        System.out.println(commentId);
-
-        //get comment
-
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-
-
-
-              Comment=  given().
-                        header("Cookie", "JSESSIONID=" + sessionId).
-                        header("Content-Type", "application/json").
-                        when().
-                        get("/rest/api/2/issue/"+IssueKey+"/comment/"+commentId).then().statusCode(201).extract().path("body");
-        System.out.println(Comment);
-
-
-        //delete comment
-        RestAssured.baseURI = "http://soft.it-hillel.com.ua:8080";
-
-
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                when().
-                delete("/rest/api/2/issue/"+IssueKey+"/comment/"+commentId).then().statusCode(204);
-
-        // delete issue
-
-        given().
-                header("Cookie", "JSESSIONID=" + sessionId).
-                header("Content-Type", "application/json").
-                when().
-                delete("/rest/api/2/issue/" + IssueKey).then().statusCode(204);*/
-
-
-
-
-    }
 
 
 
@@ -470,7 +364,7 @@ public class MyIssue {
             String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
             IssueAPI issueAPI = new IssueAPI();
-            issueAPI.secureCreateIssue(issue);
+            issueAPI.createRequest(issue);
             IssueKey = issueAPI.extractResponseByPath("key");
 
 

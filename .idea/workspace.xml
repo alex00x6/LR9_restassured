@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbcb186e-2ad8-44a1-894a-1c9283e71a51" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/suite-test-testng.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/MyIssue.class" afterPath="$PROJECT_DIR$/target/test-classes/MyIssue.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/Test_Test.class" afterPath="$PROJECT_DIR$/target/test-classes/Test_Test.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LR_9.iml" afterPath="$PROJECT_DIR$/LR_9.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fixture/JiraJSONFixture.java" afterPath="$PROJECT_DIR$/src/main/java/fixture/JiraJSONFixture.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apis/IssueAPI.java" afterPath="$PROJECT_DIR$/src/main/java/apis/IssueAPI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/RequestSender.java" afterPath="$PROJECT_DIR$/src/main/java/utils/RequestSender.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/MyIssue.java" afterPath="$PROJECT_DIR$/src/test/java/MyIssue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Test_Test.java" afterPath="$PROJECT_DIR$/src/test/java/Test_Test.java" />
     </list>
     <ignored path="LR9_restassured.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,32 +32,12 @@
       <file leaf-file-name="MyIssue.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/MyIssue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3468">
-              <caret line="206" column="30" selection-start-line="206" selection-start-column="30" selection-end-line="206" selection-end-column="30" />
+            <state relative-caret-position="-4343">
+              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3387#3407#0" expanded="false" />
+                <element signature="e#3379#3399#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="suite-test-testng.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/suite-test-testng.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Comment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/entities/Comment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -71,8 +45,8 @@
       <file leaf-file-name="IssueAPI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/apis/IssueAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+            <state relative-caret-position="283">
+              <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -81,8 +55,8 @@
       <file leaf-file-name="RequestSender.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/RequestSender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            <state relative-caret-position="714">
+              <caret line="56" column="15" selection-start-line="56" selection-start-column="15" selection-end-line="56" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,28 +79,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3094">
               <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testng.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testng.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -167,13 +119,13 @@
         <option value="$PROJECT_DIR$/src/main/java/entities/Comment.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/issueType.java" />
         <option value="$PROJECT_DIR$/src/main/java/apis/ApiUrls.java" />
-        <option value="$PROJECT_DIR$/src/main/java/apis/IssueAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/fixture/JiraJSONFixture.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/Test_Test.java" />
         <option value="$PROJECT_DIR$/suite-test-testng.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/RequestSender.java" />
+        <option value="$PROJECT_DIR$/src/main/java/apis/IssueAPI.java" />
         <option value="$PROJECT_DIR$/src/test/java/MyIssue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/RequestSender.java" />
       </list>
     </option>
   </component>
@@ -430,7 +382,35 @@
     </key>
   </component>
   <component name="RunManager" selected="TestNG.D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml">
-    <configuration default="false" name="MyIssue.changeIssueType" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="LR_9" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/suite-test-testng.xml" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="MyIssue.CreateIssue" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="LR_9" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -438,7 +418,7 @@
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MyIssue" />
-      <option name="METHOD_NAME" value="changeIssueType" />
+      <option name="METHOD_NAME" value="CreateIssue" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -458,7 +438,7 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="false" name="MyIssue.Assign" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="MyIssue.editSummary" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="LR_9" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -466,7 +446,35 @@
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MyIssue" />
-      <option name="METHOD_NAME" value="Assign" />
+      <option name="METHOD_NAME" value="editSummary" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="MyIssue.searchFilter" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="LR_9" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MyIssue" />
+      <option name="METHOD_NAME" value="searchFilter" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -497,62 +505,6 @@
       <option name="METHOD_NAME" value="DeleteIssue" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="METHOD" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="false" name="MyIssue" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="LR_9" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MyIssue" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="false" name="D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="LR_9" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" value="$PROJECT_DIR$/suite-test-testng.xml" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="SUITE" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -850,19 +802,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="TestNG.MyIssue.changeIssueType" />
-      <item index="1" class="java.lang.String" itemvalue="TestNG.MyIssue.Assign" />
-      <item index="2" class="java.lang.String" itemvalue="TestNG.MyIssue.DeleteIssue" />
-      <item index="3" class="java.lang.String" itemvalue="TestNG.MyIssue" />
-      <item index="4" class="java.lang.String" itemvalue="TestNG.D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" />
+      <item index="0" class="java.lang.String" itemvalue="TestNG.D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" />
+      <item index="1" class="java.lang.String" itemvalue="TestNG.MyIssue.CreateIssue" />
+      <item index="2" class="java.lang.String" itemvalue="TestNG.MyIssue.editSummary" />
+      <item index="3" class="java.lang.String" itemvalue="TestNG.MyIssue.searchFilter" />
+      <item index="4" class="java.lang.String" itemvalue="TestNG.MyIssue.DeleteIssue" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="TestNG.D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" />
-        <item index="1" class="java.lang.String" itemvalue="TestNG.MyIssue" />
-        <item index="2" class="java.lang.String" itemvalue="TestNG.MyIssue.DeleteIssue" />
-        <item index="3" class="java.lang.String" itemvalue="TestNG.MyIssue.Assign" />
-        <item index="4" class="java.lang.String" itemvalue="TestNG.MyIssue.changeIssueType" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.MyIssue.DeleteIssue" />
+        <item index="2" class="java.lang.String" itemvalue="TestNG.MyIssue.CreateIssue" />
+        <item index="3" class="java.lang.String" itemvalue="TestNG.MyIssue.searchFilter" />
+        <item index="4" class="java.lang.String" itemvalue="TestNG.MyIssue.editSummary" />
       </list>
     </recent_temporary>
   </component>
@@ -969,39 +921,46 @@
       <option name="project" value="LOCAL" />
       <updated>1476642403731</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="8th  v added thread">
+      <created>1476865191755</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1476865191755</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 09h 50m 14s.xml">
+    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 13h 12m 40s.xml">
       <configuration name="D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 09h 53m 15s.xml">
+    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 13h 14m 33s.xml">
       <configuration name="D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 10h 02m 47s.xml">
+    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 13h 15m 38s.xml">
       <configuration name="D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 10h 06m 41s.xml">
+    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 13h 19m 17s.xml">
       <configuration name="D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 10h 11m 21s.xml">
+    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 13h 19m 36s.xml">
       <configuration name="D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 10h 31m 27s.xml">
+    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 13h 37m 01s.xml">
       <configuration name="D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 11h 01m 14s.xml">
+    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 13h 38m 03s.xml">
       <configuration name="D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 11h 15m 37s.xml">
+    <history-entry file="D__Hillel_lab_hillel_LR_9_suite-test-testng_xml - 2016.10.19 at 13h 57m 54s.xml">
       <configuration name="D:/Hillel/lab_hillel/LR_9/suite-test-testng.xml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="MyIssue - 2016.10.19 at 09h 51m 36s.xml">
-      <configuration name="MyIssue" configurationId="TestNG" />
+    <history-entry file="MyIssue_DeleteIssue - 2016.10.19 at 13h 09m 20s.xml">
+      <configuration name="MyIssue.DeleteIssue" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="MyIssue_searchFilter - 2016.10.16 at 20h 42m 49s.xml">
-      <configuration name="MyIssue.searchFilter" configurationId="TestNG" />
+    <history-entry file="MyIssue_DeleteIssue - 2016.10.19 at 13h 11m 15s.xml">
+      <configuration name="MyIssue.DeleteIssue" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -1034,7 +993,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3979461" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3969072" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1088,11 +1047,12 @@
     <MESSAGE value="6th  v" />
     <MESSAGE value="7th  v" />
     <MESSAGE value="8th  v" />
-    <option name="LAST_COMMIT_MESSAGE" value="8th  v" />
+    <MESSAGE value="8th  v added thread" />
+    <option name="LAST_COMMIT_MESSAGE" value="8th  v added thread" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1127,7 +1087,7 @@
           <caret line="70" column="37" selection-start-line="40" selection-start-column="7" selection-end-line="70" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3387#3407#0" expanded="false" />
+            <element signature="e#3379#3399#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1137,9 +1097,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1165,7 +1123,7 @@
           <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3387#3407#0" expanded="false" />
+            <element signature="e#3379#3399#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1174,9 +1132,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1202,7 +1158,7 @@
           <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3387#3407#0" expanded="false" />
+            <element signature="e#3379#3399#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1211,9 +1167,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1239,7 +1193,7 @@
           <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3387#3407#0" expanded="false" />
+            <element signature="e#3379#3399#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1248,9 +1202,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1276,7 +1228,7 @@
           <caret line="36" column="10" selection-start-line="35" selection-start-column="5" selection-end-line="36" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3387#3407#0" expanded="false" />
+            <element signature="e#3379#3399#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1285,9 +1237,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1337,7 +1287,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3387#3407#0" expanded="false" />
+            <element signature="e#3379#3399#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1381,6 +1331,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1419,55 +1370,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Test_Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3094">
-          <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/suite-test-testng.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apis/IssueAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
           <caret line="900" column="0" selection-start-line="900" selection-start-column="0" selection-end-line="900" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/RequestSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1479,13 +1386,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/MyIssue.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/Test_Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3468">
-          <caret line="206" column="30" selection-start-line="206" selection-start-column="30" selection-end-line="206" selection-end-column="30" />
+        <state relative-caret-position="3094">
+          <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/suite-test-testng.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apis/IssueAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/RequestSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="56" column="15" selection-start-line="56" selection-start-column="15" selection-end-line="56" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3387#3407#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/MyIssue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4343">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3379#3399#0" expanded="false" />
           </folding>
         </state>
       </provider>

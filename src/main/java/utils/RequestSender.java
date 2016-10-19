@@ -53,8 +53,8 @@ public class RequestSender {
         this.createRequestSpecification()
                 .addHeader("Content-Type", CONTENT_TYPE.toString())
                 .addHeader("Cookie", "JSESSIONID=" + RequestSender.JSESSIONID)
-               // .addHeader("Cookie", "studio.crowd.tokenkey=" + RequestSender.TOKENKEYONE)
-               // .addHeader("Cookie", "atlassian.xsrf.token=" + RequestSender.TOKENKEYTWO)
+               .addHeader("Cookie", "studio.crowd.tokenkey=" + RequestSender.TOKENKEYONE)
+                .addHeader("Cookie", "atlassian.xsrf.token=" + RequestSender.TOKENKEYTWO)
                 .addBody(body);
         return this;
     }
@@ -66,6 +66,9 @@ public class RequestSender {
         return this;
 
     }
+
+
+
 
     public RequestSender createRequestSpecification() {
         requestSpecification = given().

@@ -16,7 +16,7 @@ public class IssueAPI extends RequestSender {
 
     public void deleteIssue(String issueId) {
         requestSender
-                .secureCreateRequest()
+                .voidCreateRequest()
                 .delete(ApiUrls.ISSUE.getUri(issueId));
 
     }
