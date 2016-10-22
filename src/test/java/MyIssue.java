@@ -1,5 +1,6 @@
 import apis.IssueAPI;
 import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.response.Response;
 import fixture.JiraJSONFixture;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -38,9 +39,9 @@ public class MyIssue {
         requestSender.authenticate();
 
 
-        sessionId =requestSender.extractResponseByPath("session.value");
-        assertNotNull(requestSender.extractResponseByPath("session.value"));
-        System.out.println(requestSender.extractResponseByPath("session.value"));
+        //sessionId =requestSender.extractResponseByPath("session.value");
+       // assertNotNull(requestSender.extractResponseByPath("session.value"));
+       // System.out.println(requestSender.extractResponseByPath("session.value"));
 
 
     }
@@ -56,17 +57,17 @@ public class MyIssue {
         // создание Issue
 
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.createRequest(issue);
-        // delete issue
+        Response createIssueResponse= issueAPI.secureCreateIssue(issue);
 
-        IssueKey = issueAPI.extractResponseByPath("key");
+        IssueKey = createIssueResponse.then().extract().path("key");
         System.out.println(IssueKey);
 
-        issueAPI.deleteIssue(IssueKey);
 
+        // delete issue
 
-        assertEquals(issueAPI.response.statusCode(), 204);
-        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+        Response deleteIssueResponse = issueAPI.deleteIssue(IssueKey);
+        assertEquals(deleteIssueResponse.statusCode(), 204);
+        assertTrue(deleteIssueResponse.contentType().contains(ContentType.JSON.toString()));
 
 
 
@@ -87,18 +88,16 @@ public class MyIssue {
 
         // cоздать Issue
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.createRequest(issue);
-
-       // удалить Issue
-       IssueKey = issueAPI.extractResponseByPath("key");
-
+        Response createIssueResponse= issueAPI.createIssue(issue);
+        IssueKey = createIssueResponse.then().extract().path("key");
         System.out.println(IssueKey);
 
+       // удалить Issue
 
+        Response deleteIssueResponse = issueAPI.deleteIssue(IssueKey);
+        assertEquals(deleteIssueResponse.statusCode(), 204);
+        assertTrue(deleteIssueResponse.contentType().contains(ContentType.JSON.toString()));
 
-       assertEquals(issueAPI.response.statusCode(), 201);
-        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
-        issueAPI.deleteIssue(IssueKey);
 
 
     }
@@ -114,25 +113,27 @@ public class MyIssue {
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
         // создание Issue
 
-
+        IssueAPI issueAPI = new IssueAPI();
+        Response createIssueResponse= issueAPI.createIssue(issue);
+        IssueKey = createIssueResponse.then().extract().path("key");
+        System.out.println(IssueKey);
 
 
         // получить Issue
-        IssueAPI issueAPI = new IssueAPI();
-        issueAPI.createRequest(issue);
-        IssueKey = issueAPI.extractResponseByPath("id");
 
-        issueAPI.getSecureIssue(IssueKey);
+       Response  getissue= issueAPI.getSecureIssue(IssueKey);
         System.out.println(IssueKey);
-        assertEquals(issueAPI.response.statusCode(), 200);
-       assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
-
-
+        assertEquals(getissue.statusCode(), 200);
+        assertTrue(getissue.contentType().contains(ContentType.JSON.toString()));
 
 
         // delete issue
-        IssueKey = issueAPI.extractResponseByPath("id");
-        issueAPI.deleteIssue(IssueKey);
+        Response deleteIssueResponse = issueAPI.deleteIssue(IssueKey);
+        assertEquals(deleteIssueResponse.statusCode(), 204);
+        assertTrue(deleteIssueResponse.contentType().contains(ContentType.JSON.toString()));
+
+
+
 
 
     }
@@ -146,21 +147,29 @@ public class MyIssue {
         //  не меняет самери
 
         // create issue
-
-
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
-        IssueAPI issueAPI=new IssueAPI();
-        issueAPI.createRequest(issue);
-        IssueKey = issueAPI.extractResponseByPath("key");
+        // create issue
+
+
+        IssueAPI issueAPI = new IssueAPI();
+        Response createIssueResponse= issueAPI.createIssue(issue);
+        IssueKey = createIssueResponse.then().extract().path("key");
+        System.out.println(IssueKey);
+
+        // edit summary
 
         String editSummary=jiraJSONFixture.generateJSONForEditSummary();
-        issueAPI.editSummarySecure(IssueKey, editSummary);
+        Response newSummary = issueAPI.editSummary(IssueKey, editSummary);
 
-        assertEquals(issueAPI.response.statusCode(), 204);
-        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+        assertEquals(newSummary.statusCode(), 204);
+        assertTrue(newSummary.contentType().contains(ContentType.JSON.toString()));
+
+        // delete issue
 
 
-        issueAPI.deleteIssue(IssueKey);
+        Response deleteIssueResponse = issueAPI.deleteIssue(IssueKey);
+        assertEquals(deleteIssueResponse.statusCode(), 204);
+        assertTrue(deleteIssueResponse.contentType().contains(ContentType.JSON.toString()));
 
 
 
@@ -180,29 +189,30 @@ public class MyIssue {
 
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
-        // cоздать Issue
+        // create Issue
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.createRequest(issue);
-        IssueKey = issueAPI.extractResponseByPath("key");
+        Response createIssueResponse= issueAPI.secureCreateIssue(issue);
+
+        IssueKey = createIssueResponse.then().extract().path("key");
+        System.out.println(IssueKey);
+
+
 
         //change issue type
         String issuetype=jiraJSONFixture.generateJSONForIssueType();
-        issueAPI.changeIssueType( IssueKey, issuetype);
+
+       Response changeIssueType= issueAPI.changeIssueType( IssueKey, issuetype);
+
+        assertEquals(changeIssueType.statusCode(), 204);
+        assertTrue(changeIssueType.contentType().contains(ContentType.JSON.toString()));
+
+        // delete issue
 
 
 
-        assertEquals(issueAPI.response.statusCode(), 204);
-        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
-
-        issueAPI.deleteIssue(IssueKey);
-
-
-
-
-
-
-
-
+        Response deleteIssueResponse = issueAPI.deleteIssue(IssueKey);
+        assertEquals(deleteIssueResponse.statusCode(), 204);
+        assertTrue(deleteIssueResponse.contentType().contains(ContentType.JSON.toString()));
 
 
 
@@ -213,34 +223,29 @@ public class MyIssue {
     {  long id = Thread.currentThread().getId();
         System.out.println("searchFilter. Thread id is: " + id);
 
-        // не работает
+
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
-        // cоздать Issue
+        // create Issue
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.createRequest(issue);
-        IssueKey = issueAPI.extractResponseByPath("key");
+        Response createIssueResponse= issueAPI.createIssue(issue);
+        IssueKey = createIssueResponse.then().extract().path("key");
+        System.out.println(IssueKey);
 
-        String search=jiraJSONFixture.generateJSONForSearchFilter();
-        issueAPI.secureSearch(IssueKey, search);
+        // search filter
 
+       String search=jiraJSONFixture.generateJSONForSearchFilter();
 
-        assertEquals(issueAPI.response.statusCode(), 200);
-        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
-
-
-        issueAPI.deleteIssue(IssueKey);
+       Response searchFilter = issueAPI.search(IssueKey, search);
 
 
+        assertEquals(searchFilter.statusCode(), 200);
+       assertTrue(searchFilter.contentType().contains(ContentType.JSON.toString()));
 
-
-
-
-
-
-
-
-
+        // delete issue
+        Response deleteIssueResponse = issueAPI.deleteIssue(IssueKey);
+        //assertEquals(deleteIssueResponse.statusCode(), 204);
+       // assertTrue(deleteIssueResponse.contentType().contains(ContentType.JSON.toString()));
 
     }
     @Test(enabled = false)
@@ -253,30 +258,29 @@ public class MyIssue {
 
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
-        // cоздать Issue
+        // create Issue
+
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.createRequest(issue);
+        Response createIssueResponse= issueAPI.createIssue(issue);
+        IssueKey = createIssueResponse.then().extract().path("key");
+        System.out.println(IssueKey);
 
-
-        IssueKey = issueAPI.extractResponseByPath("key");
+        // assign
 
 
         String assign = jiraJSONFixture.generateJSONForAssign();
-        issueAPI.secureAssign(IssueKey,assign);
+       Response createAssign = issueAPI.assign(IssueKey,assign);
 
 
-        assertEquals(issueAPI.response.statusCode(), 204);
-        assertTrue(issueAPI.response.contentType().contains(ContentType.JSON.toString()));
+        assertEquals(createAssign.statusCode(), 204);
+        assertTrue(createAssign.contentType().contains(ContentType.JSON.toString()));
+
+        // delete issue
 
 
-        issueAPI.deleteIssue(IssueKey);
-
-
-
-
-
-
-
+        Response deleteIssueResponse = issueAPI.deleteIssue(IssueKey);
+        assertEquals(deleteIssueResponse.statusCode(), 204);
+        assertTrue(deleteIssueResponse.contentType().contains(ContentType.JSON.toString()));
 
     }
 
@@ -290,18 +294,24 @@ public class MyIssue {
         String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
         IssueAPI issueAPI = new IssueAPI();
-        issueAPI.createRequest(issue);
-        IssueKey = issueAPI.extractResponseByPath("key");
-
+        Response createIssueResponse= issueAPI.createIssue(issue);
+        IssueKey = createIssueResponse.then().extract().path("key");
+        System.out.println(IssueKey);
 
         // add comment
         String comment = jiraJSONFixture.generateJSONForAddComment();
-        issueAPI.secureAddComment(IssueKey, comment);
-        System.out.println(IssueKey);
+
+
+        Response addcomment = issueAPI.addComment(IssueKey, comment);
+        assertEquals(addcomment.statusCode(), 201);
+        assertTrue(addcomment.contentType().contains(ContentType.JSON.toString()));
+
 
         // delete issue
 
-        issueAPI.deleteIssue(IssueKey);
+        Response deleteIssueResponse = issueAPI.deleteIssue(IssueKey);
+        assertEquals(deleteIssueResponse.statusCode(), 204);
+        assertTrue(deleteIssueResponse.contentType().contains(ContentType.JSON.toString()));
 
     }
 
@@ -325,18 +335,26 @@ public class MyIssue {
             String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
             IssueAPI issueAPI = new IssueAPI();
-            issueAPI.createRequest(issue);
-            IssueKey = issueAPI.extractResponseByPath("key");
+            Response createIssueResponse= issueAPI.createIssue(issue);
+            IssueKey = createIssueResponse.then().extract().path("key");
+            System.out.println(IssueKey);
 
 
             // add comment
             String comment = jiraJSONFixture.generateJSONForAddComment();
-            issueAPI.secureAddComment(IssueKey, comment);
-            System.out.println(IssueKey);
+
+            Response addcomment = issueAPI.addComment(IssueKey, comment);
+            assertEquals(addcomment.statusCode(), 201);
+            assertTrue(addcomment.contentType().contains(ContentType.JSON.toString()));
+
+            // delete comment
+            Response deletecomment = issueAPI.deleteComment(IssueKey);
 
             // delete issue
 
-            issueAPI.secureDeleteIssue(IssueKey);
+            Response deleteIssueResponse = issueAPI.deleteIssue(IssueKey);
+            assertEquals(deleteIssueResponse.statusCode(), 204);
+            assertTrue(deleteIssueResponse.contentType().contains(ContentType.JSON.toString()));
         }
 
 

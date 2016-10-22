@@ -92,9 +92,8 @@ public class RequestSender {
         return this;
     }
 
-    public String extractResponseByPath(String path) {
-        return response.then().extract().path(path);
-    }
+
+
 
     public RequestSender voidCreateRequest() {
         this.createRequestSpecification()

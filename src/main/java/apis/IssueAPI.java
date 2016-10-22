@@ -1,69 +1,136 @@
 package apis;
 
+import com.jayway.restassured.response.Response;
 import utils.RequestSender;
 
-public class IssueAPI extends RequestSender {
+public class IssueAPI   {
 
-    RequestSender requestSender = new RequestSender();
+    RequestSender requestSender;
 
-    public void secureCreateIssue(String body) {
+    public Response secureCreateIssue(String body) {
+        requestSender =new RequestSender();
+
         requestSender
                 .secureCreateRequest(body)
                 .post(ApiUrls.ISSUE.getUri());
+        return requestSender.response;
 
+    }
+    public Response createIssue(String body){
+        requestSender=new RequestSender();
+        requestSender
+                .createRequest(body)
+                .post(ApiUrls.ISSUE.getUri());
+        return requestSender.response;
     }
 
 
-    public void deleteIssue(String issueId) {
+    public Response deleteIssue(String issueId) {
+        requestSender =new RequestSender();
         requestSender
                 .voidCreateRequest()
                 .delete(ApiUrls.ISSUE.getUri(issueId));
+        return requestSender.response;
 
     }
-    public  void secureDeleteIssue(String issueId){
+    public  Response secureDeleteIssue(String issueId){
+        requestSender =new RequestSender();
         requestSender
                 .secureCreateRequest()
                 .delete(ApiUrls.ISSUE.getUri(issueId));
+        return requestSender.response;
     }
 
-    public void secureAddComment(String issueId, String body) {
+    public Response secureAddComment(String issueId, String body) {
+        requestSender =new RequestSender();
         requestSender
                 .secureCreateRequest(body)
                 .post(ApiUrls.ISSUE.getUri() + "/" + issueId + "/comment");
+        return requestSender.response;
 
     }
-    public void getSecureIssue (String issueId){
+    public Response deleteComment(String issueId){
+        requestSender = new RequestSender();
+        requestSender
+                .voidCreateRequest()
+                .delete(ApiUrls.ISSUE.getUri() + "/" + issueId + "/comment");
+        return requestSender.response;
+
+
+    }
+    public Response addComment (String issueId, String body){
+        requestSender = new RequestSender();
+        requestSender
+                .createRequest(body)
+                .post(ApiUrls.ISSUE.getUri() + "/" + issueId + "/comment");
+        return requestSender.response;
+    }
+    public Response getSecureIssue (String issueId){
+        requestSender =new RequestSender();
         requestSender
                 .secureCreateRequest()
                 .get(ApiUrls.ISSUE.getUri(issueId));
+        return requestSender.response;
     }
-    public void editSummarySecure (String issueId, String body){
+    public Response editSummarySecure (String issueId, String body){
+        requestSender =new RequestSender();
         requestSender
                 .secureCreateRequest(body)
                 .put(ApiUrls.ISSUE.getUri(issueId));
+        return requestSender.response;
     }
-    public void secureGetComment(String issueId, String CommentId){
+    public Response editSummary (String issueId, String body){
+        requestSender =new RequestSender();
+        requestSender
+                .createRequest(body)
+                .put(ApiUrls.ISSUE.getUri(issueId));
+        return requestSender.response;
+    }
+    public Response secureGetComment(String issueId, String CommentId){
+        requestSender =new RequestSender();
         requestSender
                 .secureCreateRequest()
                 .get(ApiUrls.ISSUE.getUri()+"/"+issueId+"/comment/"+CommentId);
+        return requestSender.response;
     }
-    public void changeIssueType (String issueId, String body){
+    public Response changeIssueType (String issueId, String body){
+        requestSender =new RequestSender();
         requestSender
                 .secureCreateRequest(body)
                 .put(ApiUrls.ISSUE.getUri(issueId));
+        return requestSender.response;
 
     }
-    public void secureSearch (String issueId, String body){
+    public Response secureSearch (String issueId, String body){
+        requestSender =new RequestSender();
+
         requestSender
                 .secureCreateRequest(body)
                 .get(ApiUrls.SEARCH.getUri(issueId));
+        return requestSender.response;
     }
-    public void secureAssign (String issueId, String body){
+    public Response search (String issueId, String body){
+        requestSender
+                .createRequest(body)
+                .get(ApiUrls.SEARCH.getUri(issueId));
+        return requestSender.response;
+    }
+    public Response secureAssign (String issueId, String body){
+        requestSender =new RequestSender();
         requestSender
                 .secureCreateRequest(body)
                 .put(ApiUrls.ISSUE.getUri(issueId)+"/assignee");
+        return requestSender.response;
 
     }
+    public Response assign (String issueId, String body) {
+        requestSender = new RequestSender();
+        requestSender
+                .createRequest(body)
+                .put(ApiUrls.ISSUE.getUri(issueId) + "/assignee");
+        return requestSender.response;
+    }
+
 
 
 
