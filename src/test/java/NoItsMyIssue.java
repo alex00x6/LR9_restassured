@@ -7,27 +7,9 @@ import org.testng.annotations.Test;
 import utils.RequestSender;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
 public class MyIssue {
-
-    String sessionId = "";
-    String IssueKey = "";
-    String commentId="";
-    String issueSummary="";
-    String issueType="";
-    String Comment="";
-
-
-
-
-
-
-
-
-    JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
-
 
 
     @BeforeTest
@@ -52,14 +34,14 @@ public class MyIssue {
         System.out.println("DeleteIssue. Thread id is: " + id);
 
 
-
+        JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
         // создание Issue
 
         IssueAPI issueAPI = new IssueAPI();
         Response createIssueResponse= issueAPI.secureCreateIssue(issue);
 
-        IssueKey = createIssueResponse.then().extract().path("key");
+        String IssueKey = createIssueResponse.then().extract().path("key");
         System.out.println(IssueKey);
 
 
@@ -83,13 +65,13 @@ public class MyIssue {
 
 
 
-
+        JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
         // cоздать Issue
         IssueAPI issueAPI = new IssueAPI();
         Response createIssueResponse= issueAPI.createIssue(issue);
-        IssueKey = createIssueResponse.then().extract().path("key");
+        String IssueKey = createIssueResponse.then().extract().path("key");
         System.out.println(IssueKey);
 
        // удалить Issue
@@ -109,13 +91,13 @@ public class MyIssue {
 
 
 
-
+        JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
         // создание Issue
 
         IssueAPI issueAPI = new IssueAPI();
         Response createIssueResponse= issueAPI.createIssue(issue);
-        IssueKey = createIssueResponse.then().extract().path("key");
+        String  IssueKey = createIssueResponse.then().extract().path("key");
         System.out.println(IssueKey);
 
 
@@ -143,7 +125,7 @@ public class MyIssue {
     public void editSummary() {
         long id = Thread.currentThread().getId();
         System.out.println("editSummary. Thread id is: " + id);
-
+        JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
         //  не меняет самери
 
         // create issue
@@ -153,7 +135,7 @@ public class MyIssue {
 
         IssueAPI issueAPI = new IssueAPI();
         Response createIssueResponse= issueAPI.createIssue(issue);
-        IssueKey = createIssueResponse.then().extract().path("key");
+        String IssueKey = createIssueResponse.then().extract().path("key");
         System.out.println(IssueKey);
 
         // edit summary
@@ -186,14 +168,14 @@ public class MyIssue {
         // не меняет тип бага
 
 
-
+        JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
         // create Issue
         IssueAPI issueAPI = new IssueAPI();
         Response createIssueResponse= issueAPI.secureCreateIssue(issue);
 
-        IssueKey = createIssueResponse.then().extract().path("key");
+        String IssueKey = createIssueResponse.then().extract().path("key");
         System.out.println(IssueKey);
 
 
@@ -223,13 +205,13 @@ public class MyIssue {
     {  long id = Thread.currentThread().getId();
         System.out.println("searchFilter. Thread id is: " + id);
 
-
+        JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
         // create Issue
         IssueAPI issueAPI = new IssueAPI();
         Response createIssueResponse= issueAPI.createIssue(issue);
-        IssueKey = createIssueResponse.then().extract().path("key");
+        String IssueKey = createIssueResponse.then().extract().path("key");
         System.out.println(IssueKey);
 
         // search filter
@@ -255,14 +237,14 @@ public class MyIssue {
     { long id = Thread.currentThread().getId();
         System.out.println("Assign. Thread id is: " + id);
 
-
+        JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
         String issue = jiraJSONFixture.generateJSONForSampleIssue();
 
         // create Issue
 
         IssueAPI issueAPI = new IssueAPI();
         Response createIssueResponse= issueAPI.createIssue(issue);
-        IssueKey = createIssueResponse.then().extract().path("key");
+        String IssueKey = createIssueResponse.then().extract().path("key");
         System.out.println(IssueKey);
 
         // assign
@@ -289,13 +271,13 @@ public class MyIssue {
 
         long id = Thread.currentThread().getId();
         System.out.println("addComment. Thread id is: " + id);
-
+        JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
         // create issue
         String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
         IssueAPI issueAPI = new IssueAPI();
         Response createIssueResponse= issueAPI.createIssue(issue);
-        IssueKey = createIssueResponse.then().extract().path("key");
+        String IssueKey = createIssueResponse.then().extract().path("key");
         System.out.println(IssueKey);
 
         // add comment
@@ -330,13 +312,13 @@ public class MyIssue {
 
             long id = Thread.currentThread().getId();
             System.out.println("deleteComment. Thread id is: " + id);
-
+            JiraJSONFixture jiraJSONFixture=new JiraJSONFixture();
             /// create issue
             String issue =jiraJSONFixture.generateJSONForSampleIssue();
 
             IssueAPI issueAPI = new IssueAPI();
             Response createIssueResponse= issueAPI.createIssue(issue);
-            IssueKey = createIssueResponse.then().extract().path("key");
+            String IssueKey = createIssueResponse.then().extract().path("key");
             System.out.println(IssueKey);
 
 
@@ -360,19 +342,4 @@ public class MyIssue {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
