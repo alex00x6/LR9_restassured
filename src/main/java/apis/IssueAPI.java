@@ -5,10 +5,10 @@ import utils.RequestSender;
 
 public class IssueAPI   {
 
-    RequestSender requestSender;
+
 
     public Response secureCreateIssue(String body) {
-        requestSender =new RequestSender();
+        RequestSender requestSender  = new RequestSender();
 
         requestSender
                 .secureCreateRequest(body)
@@ -17,7 +17,7 @@ public class IssueAPI   {
 
     }
     public Response createIssue(String body){
-        requestSender=new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .createRequest(body)
                 .post(ApiUrls.ISSUE.getUri());
@@ -26,7 +26,7 @@ public class IssueAPI   {
 
 
     public Response deleteIssue(String issueId) {
-        requestSender =new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .voidCreateRequest()
                 .delete(ApiUrls.ISSUE.getUri(issueId));
@@ -34,7 +34,7 @@ public class IssueAPI   {
 
     }
     public  Response secureDeleteIssue(String issueId){
-        requestSender =new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .secureCreateRequest()
                 .delete(ApiUrls.ISSUE.getUri(issueId));
@@ -42,7 +42,7 @@ public class IssueAPI   {
     }
 
     public Response secureAddComment(String issueId, String body) {
-        requestSender =new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .secureCreateRequest(body)
                 .post(ApiUrls.ISSUE.getUri() + "/" + issueId + "/comment");
@@ -50,7 +50,7 @@ public class IssueAPI   {
 
     }
     public Response deleteComment(String issueId){
-        requestSender = new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .voidCreateRequest()
                 .delete(ApiUrls.ISSUE.getUri() + "/" + issueId + "/comment");
@@ -59,42 +59,42 @@ public class IssueAPI   {
 
     }
     public Response addComment (String issueId, String body){
-        requestSender = new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .createRequest(body)
                 .post(ApiUrls.ISSUE.getUri() + "/" + issueId + "/comment");
         return requestSender.response;
     }
     public Response getSecureIssue (String issueId){
-        requestSender =new RequestSender();
+        RequestSender requestSender =new RequestSender();
         requestSender
                 .secureCreateRequest()
                 .get(ApiUrls.ISSUE.getUri(issueId));
         return requestSender.response;
     }
     public Response editSummarySecure (String issueId, String body){
-        requestSender =new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .secureCreateRequest(body)
                 .put(ApiUrls.ISSUE.getUri(issueId));
         return requestSender.response;
     }
     public Response editSummary (String issueId, String body){
-        requestSender =new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .createRequest(body)
                 .put(ApiUrls.ISSUE.getUri(issueId));
         return requestSender.response;
     }
     public Response secureGetComment(String issueId, String CommentId){
-        requestSender =new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .secureCreateRequest()
                 .get(ApiUrls.ISSUE.getUri()+"/"+issueId+"/comment/"+CommentId);
         return requestSender.response;
     }
     public Response changeIssueType (String issueId, String body){
-        requestSender =new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .secureCreateRequest(body)
                 .put(ApiUrls.ISSUE.getUri(issueId));
@@ -102,7 +102,7 @@ public class IssueAPI   {
 
     }
     public Response secureSearch (String issueId, String body){
-        requestSender =new RequestSender();
+        RequestSender requestSender = new RequestSender();
 
         requestSender
                 .secureCreateRequest(body)
@@ -110,13 +110,14 @@ public class IssueAPI   {
         return requestSender.response;
     }
     public Response search (String issueId, String body){
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .createRequest(body)
                 .get(ApiUrls.SEARCH.getUri(issueId));
         return requestSender.response;
     }
     public Response secureAssign (String issueId, String body){
-        requestSender =new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .secureCreateRequest(body)
                 .put(ApiUrls.ISSUE.getUri(issueId)+"/assignee");
@@ -124,14 +125,10 @@ public class IssueAPI   {
 
     }
     public Response assign (String issueId, String body) {
-        requestSender = new RequestSender();
+        RequestSender requestSender = new RequestSender();
         requestSender
                 .createRequest(body)
                 .put(ApiUrls.ISSUE.getUri(issueId) + "/assignee");
         return requestSender.response;
     }
-
-
-
-
 }
